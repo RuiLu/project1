@@ -197,6 +197,11 @@ def signup():
 def add():
   username = request.form['username']
   password = request.form['password']
+
+  cur = g.conn.execute("SELECT username, password from user_account")
+  for res in cur:
+    print res[0], res[1]
+
   print username 
   print password
   # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
