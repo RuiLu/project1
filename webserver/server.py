@@ -203,10 +203,13 @@ def signup():
     rating = request.form['rating']
     print rating
     parameters = (usrname,password,name,phone,address,rating)
+    print parameters
     try:
-      g.conn.execute('INSERT INTO user_account(username,password,name,phone,address,rating) values(%s,%s,%s,%s,%s,%s)',parameters)
+      g.conn.execute('INSERT INTO user_account(username,password,name,phone,address,rating) VALUES(%s,%s,%s,%s,%s,%s)',parameters)
+      return redirect('/')
     except Exception as e:
       error = "Not correct"
+      return render_template('signup.html', error = error)
   return render_template("signup.html")
 
 
