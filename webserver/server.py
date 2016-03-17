@@ -114,17 +114,17 @@ def teardown_request(exception):
 # see for routing: http://flask.pocoo.org/docs/0.10/quickstart/#routing
 # see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 #
-@app.route('/')
-def main():
-  """
-  request is a special object that Flask provides to access web request information:
+# @app.route('/')
+# def main():
+#   """
+#   request is a special object that Flask provides to access web request information:
 
-  request.method:   "GET" or "POST"
-  request.form:     if the browser submitted a form, this contains the data in the form
-  request.args:     dictionary of URL arguments e.g., {a:1, b:2} for http://localhost?a=1&b=2
+#   request.method:   "GET" or "POST"
+#   request.form:     if the browser submitted a form, this contains the data in the form
+#   request.args:     dictionary of URL arguments e.g., {a:1, b:2} for http://localhost?a=1&b=2
 
-  See its API: http://flask.pocoo.org/docs/0.10/api/#incoming-request-data
-  """
+#   See its API: http://flask.pocoo.org/docs/0.10/api/#incoming-request-data
+#   """
 
   # DEBUG: this is debugging code to see what request looks like
   # print request.args
@@ -173,7 +173,7 @@ def main():
   # for example, the below file reads template/index.html
   #
   # return render_template("index.html", **context)
-  return render_template("signin.html")
+  # return render_template("signin.html")
 
 #
 # This is an example of a different path.  You can see it at
@@ -221,7 +221,7 @@ def signin():
     else:
       print('fail')
       error = 'fail'
-  return render_template('login.html', error = error)
+  return render_template('signin.html', error = error)
   # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
   # return redirect('/')
 
