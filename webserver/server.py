@@ -187,7 +187,7 @@ def signin():
 def another():
   return render_template("anotherfile.html")
 
-@app.rout('/main')
+@app.route('/main')
 def main():
   cursor = g.conn.execute('SELECT * FROM user_account')
   names = []
