@@ -4,21 +4,30 @@
       font-size: 15pt;
       font-family: arial;
     }
+    p{
+      font-size: 8pt;
+    }
   </style>
 
 
 <body>
   <h1>Sign Up</h1>
 
-<form method="POST" action="/add">
+<p>*: must fill in</p>
+<form method="POST" action="/signup">
   <dl>
-    <dt>USERNAME:
+    <dt>USERNAME *:
     <dd><input type='text' name='username'>
-    <dt>PASSWORD:
+    <dt>PASSWORD *:
     <dd><input type='password' name='password'>
+    <dt>PHONE:
+    <dd><input type='text' name='phone'>
+    <dt>ADDRESS:
+    <dd><input type='text' name='address'>
+    <dt>RATING *:
+    <dd><input type='number' name='rating'>
     <dd>
-      <input type='submit' value="Sign In">
-      <input type='submit' value="Sign Up">
+      <input type='submit' value="Submit">
     </dd>
   </dl>
 </form>

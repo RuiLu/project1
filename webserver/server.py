@@ -193,36 +193,35 @@ def signup():
 
 
 # Example of adding new data to the database
-@app.route('/main', methods=['POST'])
+@app.route('/main', methods=['GET', 'POST'])
 def signin():
-
   error = None
+  if request.method == 'POST':
+    username = request.form['username']
+    password = request.form['password']
 
-  username = request.form['username']
-  password = request.form['password']
+    isCorrect = False
+    cur = g.conn.execute("SELECT username, password from user_account")
+    for res in cur:
+      if res[0] == username and res[1] == password:
+        isCorrect = True
+        break
 
-  isCorrect = False
-  cur = g.conn.execute("SELECT username, password from user_account")
-  for res in cur:
-    if res[0] == username and res[1] == password:
-      isCorrect = True
-      break
+    if isCorrect:
+      print('succeed')
+      cursor = g.conn.execute('SELECT * FROM user_account')
+      names = []
+      for result in cursor:
+        names.append(result['name'])  # can also be accessed using result[0]
+      cursor.close()
 
-  if isCorrect:
-    print('succeed')
-    cursor = g.conn.execute('SELECT * FROM user_account')
-    names = []
-    for result in cursor:
-      names.append(result['name'])  # can also be accessed using result[0]
-    cursor.close()
-
-    context = dict(data = names)
-    
-    return render_template('index.html', **context)
-  else:
-    print('fail')
-    error = 'wrong'
-    return render_template('login.html',error=error)
+      context = dict(data = names)
+      
+      return render_template('index.html', **context)
+    else:
+      print('fail')
+      error = 'fail'
+  return render_template('login.html', error = error)
   # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
   # return redirect('/')
 
