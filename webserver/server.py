@@ -187,7 +187,7 @@ def teardown_request(exception):
 def another():
   return render_template("anotherfile.html")
 
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['GET','POST'])
 def signup():
   error = None
   if request.method == 'POST':
