@@ -115,7 +115,7 @@ def teardown_request(exception):
 # see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 #
 @app.route('/')
-def signin():
+def main():
   """
   request is a special object that Flask provides to access web request information:
 
@@ -194,7 +194,7 @@ def signup():
 
 # Example of adding new data to the database
 @app.route('/signin', methods=['POST'])
-def add():
+def signin():
 
   error = None
 
