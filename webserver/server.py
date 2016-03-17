@@ -136,7 +136,7 @@ def index():
   cursor = g.conn.execute("SELECT * FROM user_account")
   names = []
   for result in cursor:
-    names.append(result['name')  # can also be accessed using result[0]
+    names.append(result['name')]  # can also be accessed using result[0]
   cursor.close()
 
   #
