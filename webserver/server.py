@@ -196,12 +196,21 @@ def signup():
 @app.route('/main', methods=['POST'])
 def add():
   username = request.form['username']
-  passward = request.form['password']
+  password = request.form['password']
   print username 
   print password
   # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
   # return redirect('/')
-  return render_template("index.html");
+
+  cursor = g.conn.execute("SELECT * FROM user_account")
+  names = []
+  for result in cursor:
+    names.append(result['name'])  # can also be accessed using result[0]
+  cursor.close()
+
+  context = dict(data = names)
+  
+  return render_template("index.html", **context);
 
 
 @app.route('/login')
