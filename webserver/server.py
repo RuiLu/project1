@@ -193,7 +193,7 @@ def signup():
 
 
 # Example of adding new data to the database
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/signin', methods=['GET', 'POST'])
 def signin():
   error = None
   if request.method == 'POST':

@@ -9,8 +9,8 @@
 
 <body>
   <h1>Sign In</h1>
-  {% if error %} <p class="error"><strong>Error:</strong> {{ error }} {% endif %}
-  <form method="POST" action="/main">
+  {% if error: %} <p class="error"><strong>Error:</strong> {{ error }} {% endif %}
+  <form method="POST" action="/signin">
     <dl>
       <dt>USERNAME:
       <dd><input type='text' name='username'>
