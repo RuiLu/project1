@@ -191,6 +191,16 @@ def another():
 def signup():
   return render_template("signup.html")
 
+@app.route('/main')
+def main():
+  cursor = g.conn.execute('SELECT * FROM user_account')
+  names = []
+  for result in cursor:
+    names.append(result['name'])  # can also be accessed using result[0]
+  cursor.close()
+
+  context = dict(data = names) 
+  return render_template('index.html', **context)
 
 # Example of adding new data to the database
 @app.route('/', methods=['GET', 'POST'])
@@ -209,15 +219,7 @@ def signin():
 
     if isCorrect:
       print('succeed')
-      cursor = g.conn.execute('SELECT * FROM user_account')
-      names = []
-      for result in cursor:
-        names.append(result['name'])  # can also be accessed using result[0]
-      cursor.close()
-
-      context = dict(data = names)
-      
-      return render_template('index.html', **context)
+      redirect('/main')
     else:
       print('fail')
       error = 'fail'
