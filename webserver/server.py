@@ -206,24 +206,21 @@ def add():
       break
 
   if isCorrect:
-    flash("successful")
-  else:
-    flash("fail")
+    print('succeed')
+    cursor = g.conn.execute('SELECT * FROM user_account')
+    names = []
+    for result in cursor:
+      names.append(result['name'])  # can also be accessed using result[0]
+    cursor.close()
 
-  print username 
-  print password
+    context = dict(data = names)
+  
+    return render_template('index.html', **context)
+  else:
+    print('fail')
+    return redirect('/')
   # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
   # return redirect('/')
-
-  cursor = g.conn.execute("SELECT * FROM user_account")
-  names = []
-  for result in cursor:
-    names.append(result['name'])  # can also be accessed using result[0]
-  cursor.close()
-
-  context = dict(data = names)
-  
-  return render_template("index.html", **context);
 
 
 @app.route('/login')
