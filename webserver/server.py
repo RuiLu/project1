@@ -133,11 +133,11 @@ def index():
   #
   # example of a database query
   #
-  cursor = g.conn.execute("SELECT * FROM user_account")
-  names = []
-  for result in cursor:
-    names.append(result['name'])  # can also be accessed using result[0]
-  cursor.close()
+  # cursor = g.conn.execute("SELECT * FROM user_account")
+  # names = []
+  # for result in cursor:
+  #   names.append(result['name'])  # can also be accessed using result[0]
+  # cursor.close()
 
   #
   # Flask uses Jinja templates, which is an extension to HTML where you can
@@ -165,14 +165,15 @@ def index():
   #     <div>{{n}}</div>
   #     {% endfor %}
   #
-  context = dict(data = names)
+  # context = dict(data = names)
 
 
   #
   # render_template looks in the templates/ folder for files.
   # for example, the below file reads template/index.html
   #
-  return render_template("index.html", **context)
+  # return render_template("index.html", **context)
+  return reder_template("signin.html")
 
 #
 # This is an example of a different path.  You can see it at
@@ -186,13 +187,21 @@ def index():
 def another():
   return render_template("anotherfile.html")
 
+@app.route('/signup')
+def signup():
+  return render_template("signup.html")
+
 
 # Example of adding new data to the database
-@app.route('/add', methods=['POST'])
+@app.route('/main', methods=['POST'])
 def add():
-  name = request.form['name']
-  g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
-  return redirect('/')
+  username = request.form['username']
+  passward = request.form['password']
+  print username 
+  print password
+  # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
+  # return redirect('/')
+  return render_template("index.html");
 
 
 @app.route('/login')
