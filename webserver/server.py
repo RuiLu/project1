@@ -115,7 +115,7 @@ def teardown_request(exception):
 # see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 #
 @app.route('/')
-def index():
+def signin():
   """
   request is a special object that Flask provides to access web request information:
 
@@ -127,7 +127,7 @@ def index():
   """
 
   # DEBUG: this is debugging code to see what request looks like
-  print request.args
+  # print request.args
 
 
   #
