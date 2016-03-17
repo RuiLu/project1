@@ -195,14 +195,18 @@ def signup():
     print username
     password = request.form['password']
     print password
+    name = request.form['name']
     phone = request.form['phone']
     print phone
     address = request.form['address']
     print address
     rating = request.form['rating']
     print rating
-    
-
+    parameters = (usrname,password,name,phone,address,rating)
+    try:
+      g.conn.execute('INSERT INTO user_account(username,password,name,phone,address,rating) values(%s,%s,%s,%s,%s,%s)',parameters)
+    except Exception as e:
+      error = "Not correct"
   return render_template("signup.html")
 
 

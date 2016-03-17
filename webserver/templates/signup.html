@@ -12,7 +12,7 @@
 
 <body>
   <h1>Sign Up</h1>
-
+{% if error: %} <p class="error"><strong>Error:</strong> {{ error }} {% endif %}
 <p>*: must fill in</p>
 <form method="POST" action="/signup">
   <dl>
@@ -20,6 +20,8 @@
     <dd><input type='text' name='username'>
     <dt>PASSWORD *:
     <dd><input type='password' name='password'>
+    <dt>NAME *:
+    <dd><input type='text' name='name'>
     <dt>PHONE:
     <dd><input type='text' name='phone'>
     <dt>ADDRESS:
