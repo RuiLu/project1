@@ -218,6 +218,7 @@ def add():
     return render_template('index.html', **context)
   else:
     print('fail')
+    flash("wrong")
     return redirect('/')
   # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
   # return redirect('/')
