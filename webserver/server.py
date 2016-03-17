@@ -198,9 +198,17 @@ def add():
   username = request.form['username']
   password = request.form['password']
 
+  isCorrect = False
   cur = g.conn.execute("SELECT username, password from user_account")
   for res in cur:
-    print res[0], res[1]
+    if res[0] == username and res[1] == password:
+      isCorrect = True
+      break
+
+  if isCorrect:
+    flash("successful")
+  else:
+    flash("fail")
 
   print username 
   print password
