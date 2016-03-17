@@ -192,20 +192,15 @@ def signup():
   error = None
   if request.method == 'POST':
     username = request.form['username']
-    print username
     password = request.form['password']
-    print password
     name = request.form['name']
     phone = request.form['phone']
-    print phone
     address = request.form['address']
-    print address
-    rating = request.form['rating']
-    print rating
-    parameters = (usrname,password,name,phone,address,rating)
-    print parameters
+    rating = int(request.form['rating'])
+    parameters = (username, password, name, phone, address, rating)
     try:
-      g.conn.execute('INSERT INTO user_account(username,password,name,phone,address,rating) VALUES(%s,%s,%s,%s,%s,%s)',parameters)
+      g.conn.execute('INSERT INTO user_account(username,password,name,phone,address,rating) VALUES(%s,%s,%s,%s,%s,%s)', parameters)
+      print "chenggong!"
       return redirect('/')
     except Exception as e:
       error = "Not correct"
