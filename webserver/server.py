@@ -229,7 +229,7 @@ def add():
     # cursor.close()
 
     # context = dict(data = names)
-  
+    return redirect('/main')
     # return render_template('index.html', **context)
   else:
     print('fail')
