@@ -220,7 +220,7 @@ def signin():
 
     if isCorrect:
       print('succeed')
-      redirect('/main')
+      return redirect('/main')
     else:
       print('fail')
       error = 'fail'
