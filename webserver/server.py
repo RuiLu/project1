@@ -189,7 +189,16 @@ def another():
 
 @app.route('/signup')
 def signup():
+  error = None
+  if request.method == 'POST':
+    username = request.form['username']
+    password = request.form['password']
+    phone = request.form['phone']
+    address = request.form['address']
+    rating = request.form['rating']
+    print username,password,phone,address,rating
   return render_template("signup.html")
+
 
 @app.route('/main')
 def main():
@@ -202,7 +211,7 @@ def main():
   context = dict(data = names) 
   return render_template('index.html', **context)
 
-# Example of adding new data to the database
+# main page is login page
 @app.route('/', methods=['GET', 'POST'])
 def signin():
   error = None
@@ -225,14 +234,7 @@ def signin():
       print('fail')
       error = 'fail'
   return render_template('signin.html', error = error)
-  # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
-  # return redirect('/')
 
-
-@app.route('/login')
-def login():
-    abort(401)
-    this_is_never_executed()
 
 
 if __name__ == "__main__":
