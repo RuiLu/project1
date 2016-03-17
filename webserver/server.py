@@ -187,14 +187,29 @@ def signin():
 def another():
   return render_template("anotherfile.html")
 
+@app.rout('/main')
+def main():
+  cursor = g.conn.execute('SELECT * FROM user_account')
+  names = []
+  for result in cursor:
+    names.append(result['name'])  # can also be accessed using result[0]
+  cursor.close()
+
+  context = dict(data = names)
+  
+  return render_template('index.html', **context)
+
 @app.route('/signup')
 def signup():
   return render_template("signup.html")
 
 
 # Example of adding new data to the database
-@app.route('/main', methods=['POST'])
+@app.route('/signin', methods=['POST'])
 def add():
+
+  error = None
+
   username = request.form['username']
   password = request.form['password']
 
@@ -207,19 +222,19 @@ def add():
 
   if isCorrect:
     print('succeed')
-    cursor = g.conn.execute('SELECT * FROM user_account')
-    names = []
-    for result in cursor:
-      names.append(result['name'])  # can also be accessed using result[0]
-    cursor.close()
+    # cursor = g.conn.execute('SELECT * FROM user_account')
+    # names = []
+    # for result in cursor:
+    #   names.append(result['name'])  # can also be accessed using result[0]
+    # cursor.close()
 
-    context = dict(data = names)
+    # context = dict(data = names)
   
-    return render_template('index.html', **context)
+    # return render_template('index.html', **context)
   else:
     print('fail')
-    flash("wrong")
-    return redirect('/')
+    error = 'wrong'
+    return render_template('login.html',error=error)
   # g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
   # return redirect('/')
 
