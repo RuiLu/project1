@@ -192,11 +192,16 @@ def signup():
   error = None
   if request.method == 'POST':
     username = request.form['username']
+    print username
     password = request.form['password']
+    print password
     phone = request.form['phone']
+    print phone
     address = request.form['address']
+    print address
     rating = request.form['rating']
-    print username,password,phone,address,rating
+    
+
   return render_template("signup.html")
 
 
