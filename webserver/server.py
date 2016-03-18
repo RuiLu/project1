@@ -204,7 +204,7 @@ def signup():
       
       return redirect('/')
     except Exception as e:
-      error = "Not correct"
+      error = "Invalid input, try others."
       return render_template('signup.html', error = error)
   return render_template("signup.html")
 
