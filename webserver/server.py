@@ -18,11 +18,12 @@ Read about it online.
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
-from flask import Flask, request, render_template, g, redirect, Response
+from flask import Flask, session, request, render_template, g, redirect, \
+                  Response,flash
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir)
-
+app.secret_key = '\xd2\x87\x9c\x19\xd9}\x85\xcf\xb4\xc3\x18\xf3\n\xce\xcb\x8e;}SR\x88\xef\xd1\xd2'
 
 #
 # The following uses the sqlite3 database test.db -- you can use this for debugging purposes
@@ -200,7 +201,7 @@ def signup():
     parameters = (username, password, name, phone, address, rating)
     try:
       g.conn.execute('INSERT INTO user_account(username,password,name,phone,address,rating) VALUES(%s,%s,%s,%s,%s,%s)', parameters)
-      print "chenggong!"
+      
       return redirect('/')
     except Exception as e:
       error = "Not correct"
@@ -216,7 +217,8 @@ def main():
     names.append(result['name'])  # can also be accessed using result[0]
   cursor.close()
 
-  context = dict(data = names) 
+  context = dict(data = names)
+  print session['userid'] 
   return render_template('index.html', **context)
 
 # main page is login page
@@ -228,11 +230,11 @@ def signin():
     password = request.form['password']
 
     isCorrect = False
-    cur = g.conn.execute("SELECT username, password from user_account")
+    cur = g.conn.execute("SELECT userid, username, password from user_account")
     for res in cur:
-      print res[0], res[1]
-      if res[0] == username and res[1] == password:
+      if res[1] == username and res[2] == password:
         isCorrect = True
+	session['userid'] = res[0]
         break
 
     if isCorrect:
@@ -269,6 +271,5 @@ if __name__ == "__main__":
     HOST, PORT = host, port
     print "running on %s:%d" % (HOST, PORT)
     app.run(host=HOST, port=PORT, debug=debug, threaded=threaded)
-
 
   run()
