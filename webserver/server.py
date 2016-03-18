@@ -208,6 +208,10 @@ def signup():
       return render_template('signup.html', error = error)
   return render_template("signup.html")
 
+@app.route('/signout')
+def signout():
+  session.pop('userid', None)
+  return redirect('/')
 
 @app.route('/main')
 def main():
@@ -239,7 +243,7 @@ def signin():
     for res in cur:
       if res[1] == username and res[2] == password:
         isCorrect = True
-	session['userid'] = res[0]
+	      session['userid'] = res[0]
         break
 
     if isCorrect:
