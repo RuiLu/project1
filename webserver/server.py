@@ -243,11 +243,9 @@ def signin():
         break
 
     if isCorrect:
-      print('succeed')
       return redirect('/main')
     else:
-      print('fail')
-      error = 'fail'
+      error = 'Invalid username or password, try again.'
   return render_template('signin.html', error = error)
 
 

@@ -33,6 +33,28 @@ body {
   border-top-right-radius: 0;
 }
 
+.form-signin input[type="name"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin input[type="phone"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin input[type="address"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin input[type="rating"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 #button-signup {
   max-width: 330px;
   padding: 15px;
@@ -41,4 +63,6 @@ body {
 
 #warning {
   color: red;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
