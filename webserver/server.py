@@ -211,14 +211,19 @@ def signup():
 
 @app.route('/main')
 def main():
-  cursor = g.conn.execute('SELECT * FROM user_account')
+  sql = 'SELECT username, name, phone, address, rating FROM user_account ' + \
+        'WHERE userid = %s'
+  cursor = g.conn.execute(sql, session['userid'])
   names = []
   for result in cursor:
-    names.append(result['name'])  # can also be accessed using result[0]
+    names.append(result['username'])  # can also be accessed using result[0]
+    names.append(result['name'])
+    names.append(result['phone'])
+    names.append(result['address'])
+    names.append(result['rating'])
   cursor.close()
 
   context = dict(data = names)
-  print session['userid'] 
   return render_template('index.html', **context)
 
 # main page is login page
