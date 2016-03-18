@@ -1,29 +1,97 @@
-<html>
-  <style>
-    body{ 
-      font-size: 15pt;
-      font-family: arial;
-    }
-  </style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FindYa</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet">
 
 
-<body>
-  <h1>Some famous Computer Scientists</h1>
-  <div>{{data}}</div>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
-  <div>
-    {% for n in data %}
-    <div>{{n}}</div>
-    {% endfor %}
-  </div>
+  <body>
 
-<p><a href="/another">Go to the other page</a></p>
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="list-group-item"><form action="/signout"><a href="#">Sign Out</a></form></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">FindYa</h3>
+      </div>
 
-<form method="POST" action="/add">
-<p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
-</form>
-
-</body>
+      <div class="jumbotron">
+        <h1>Welcome, <span> {{data[1]}}.</span></h1>
+      </div>
 
 
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <form action="/product">
+            <button type="button" class="custom" id="b1">
+              <h3>Buy</h3>
+              <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            </button>
+            
+          </from>
+          <form action="/sell">
+            <button type="button" class="custom" id="b2">
+              <h3>Sell</h3>
+              <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+            </button>
+          </form>
+          <form action="/cart">
+            <button type="button" class="custom" id="b3">
+              <h3>Cart</h3>
+              <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </button>
+          </form>
+        </div>
+
+        <div class="col-lg-6">
+          <form action="/order">
+            <button type="button" class="custom" id="b4">
+              <h3>Order</h3>
+              <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </button>
+          </form>
+          <form action="/billing">
+            <button type="button" class="custom" id="b5">
+              <h3>Billing</h3>
+              <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </button>
+          </form>
+          <form action="/setting">
+            <button type="button" class="custom" id="b6">
+              <h3>Setting</h3>
+              <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; 2016 Spring, IDB.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
 </html>
