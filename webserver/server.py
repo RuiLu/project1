@@ -15,6 +15,8 @@ A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
 """
 
+
+import time
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -252,6 +254,25 @@ def signin():
       error = 'Invalid username or password, try again.'
   return render_template('signin.html', error = error)
 
+@app.route('/sell', methods=['GET','POST'])
+def sell():
+  error = None
+  if request.method == 'POST'
+    name = request.form['name']
+    price = int(request.form['price'])
+    description = request.form['description']
+    quantity = int(request.form['quantity'])
+    picture = request.form['picture']
+    date = time.strftime("%d/%m/%Y")
+    print date
+    parameters = (name, price, description, quantity, date, picture)
+    try:
+      g.conn.execute('INSERT INTO goods(name,price,description,quantity,date,picture) VALUES (%s,%s,%s,%s,%s,%s)', parameters)
+      return redirect('/main')
+    except Exception as e:
+      error = 'Invalid input, try again.'
+      return render_template('sell.html', error = error)
+    return render_template('sell.html')
 
 
 if __name__ == "__main__":
