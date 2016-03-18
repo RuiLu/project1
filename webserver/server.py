@@ -243,7 +243,7 @@ def signin():
     for res in cur:
       if res[1] == username and res[2] == password:
         isCorrect = True
-	      session['userid'] = res[0]
+	session['userid'] = res[0]
         break
 
     if isCorrect:

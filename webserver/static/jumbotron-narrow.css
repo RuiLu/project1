@@ -74,6 +74,13 @@ body {
   border: none;
 }
 
+.head {
+  width: 60px;
+  margin: 3px;
+  color: white;
+  border: none;
+}
+
 #b1 {
   background-color: #ff3333;
 } 
@@ -91,8 +98,15 @@ body {
 } 
 #b6 {
   background-color: #3385ff;
+}
+
+#home {
+  background-color: #3385ff;
 } 
 
+#signout {
+  background-color: #d9d9d9;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */

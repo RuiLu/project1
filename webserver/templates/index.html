@@ -29,9 +29,20 @@
     <div class="container">
       <div class="header clearfix">
         <nav>
-          <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li class="list-group-item"><form action="/signout"><a href="#">Sign Out</a></form></li>
+          <ul class="pull-right"> 
+            <form action="/signout">
+              <button class="head" id="signout" type="submit">
+                <h5>Sign Out</h5>
+              </button>
+            </form>
+          </ul>
+          
+          <ul class="pull-right">
+	    <form action="/main">
+	      <button class="head" id="home" type="submit">
+                <h5>Home</h5>
+              </button>
+            </form>
           </ul>
         </nav>
         <h3 class="text-muted">FindYa</h3>
