@@ -16,7 +16,7 @@ Read about it online.
 """
 
 
-import time
+import datetime
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -257,22 +257,29 @@ def signin():
 @app.route('/sell', methods=['GET','POST'])
 def sell():
   error = None
-  if request.method == 'POST'
+  if request.method == 'POST':
     name = request.form['name']
+    print name
     price = int(request.form['price'])
+    print price
     description = request.form['description']
+    print description
     quantity = int(request.form['quantity'])
+    print quantity
     picture = request.form['picture']
-    date = time.strftime("%d/%m/%Y")
+    print picture
+    i = datetime.datetime.now()
+    date = i.isoformat()
+    userid = session['userid']
     print date
-    parameters = (name, price, description, quantity, date, picture)
+    parameters = (name, price, description, quantity, date, picture, userid)
     try:
-      g.conn.execute('INSERT INTO goods(name,price,description,quantity,date,picture) VALUES (%s,%s,%s,%s,%s,%s)', parameters)
+      g.conn.execute('INSERT INTO goods(name,price,description,quantity,date,picture,userid) VALUES (%s,%s,%s,%s,%s,%s,%s)', parameters)
       return redirect('/main')
     except Exception as e:
       error = 'Invalid input, try again.'
       return render_template('sell.html', error = error)
-    return render_template('sell.html')
+  return render_template('sell.html')
 
 
 if __name__ == "__main__":

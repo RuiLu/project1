@@ -27,7 +27,7 @@
     <div class="container">
 
       <form class="form-signin" method="POST" action="/">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Sign In</h2>
         <label class="sr-only">Username</label>
         <input type="text" id="inputEmail" class="form-control" placeholder="Username" name="username" required autofocus>
         <label class="sr-only">Password</label>
@@ -35,7 +35,7 @@
         {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }} {% endif %}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
-      <form action="/signup" id="button-signup">
+      <form class="form-signin" action="/signup">
         <button class="btn btn-lg btn-secondary btn-block" href="/signup">Sign up</button>   
       </form>
     </div> <!-- /container -->
