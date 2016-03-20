@@ -282,6 +282,7 @@ def sell():
   return render_template('sell.html')
 
 def search_order(userid):
+  print 'before search'
   parameters=(userid)
   cursor=g.conn.execute('select orderid, orderdate, state, totalprice from order_list where userid=%s',userid)
   order_list=[]
@@ -292,6 +293,7 @@ def search_order(userid):
     order_list.append(order)
 
   cursor.close()
+  print 'search order finished'
   return order_list
 
 @app.route('/order', methods=['GET','POST'])
@@ -300,7 +302,7 @@ def order():
   order=None
   userid=session['userid']
   order_list=search_order(userid)
-
+ 
 
   content=dict(data=order_list, error=error, order_status=order)
   return render_template('order.html', **content)

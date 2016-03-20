@@ -27,7 +27,7 @@
     <![endif]-->
   </head>
 
-  <body>
+<body>
 
     <div class="container">
       <div class="header clearfix">
@@ -55,15 +55,15 @@
 	  <div>{{data}}</div>
   	    <div>
             <div class="row">
-            <div class="col-md-4">Orderid</div>
-            <div class="col-md-4">date</div>
-            <div class="col-md-4">status</div>
-            <div class="col-md-4">total price</div>
+            <div class="col-md-3">Orderid</div>
+            <div class="col-md-3">date</div>
+            <div class="col-md-3">status</div>
+            <div class="col-md-3">total price</div>
             </div>
 	    {% for n in data %}
 	      <div class="row">
 		{% for m in n %}
-	        <div class="col-md-4">m</div>
+	        <div class="col-md-3">m</div>
 		{% endfor %}
 	      </div>
 	    {% endfor %}
