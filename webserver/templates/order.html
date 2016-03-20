@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FindYa</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='jumbotrom=narrow.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='grid.css')}}" rel="stylesheet">   
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="pull-right"> 
+            <form action="/signout">
+              <button class="head" id="signout" type="submit">
+                <h5>Sign Out</h5>
+              </button>
+            </form>
+          </ul>
+          
+          <ul class="pull-right">
+	    <form action="/main">
+	      <button class="head" id="home" type="submit">
+                <h5>Home</h5>
+              </button>
+            </form>
+          </ul>
+        </nav>
+        <h3 class="text-muted">FindYa</h3>
+      </div>
+
+	<h1>Current Order List</h1>
+
+	  <div>
+	    {% for n in data %}
+	      <div class="row">
+		{% for m in n %}
+	        <div class="col-md-4">m</div>
+		{% endfor %}
+	      </div>
+	    {% endfor %}
+	  </div>
+
+      <form class="form-signin" method="POST" action="/order_state">
+        <h2 class="form-signin-heading">Please fill in the Order ID you want to inquire.</h2>
+        {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
+        <label class="sr-only">ID</label><span id="hint">ID *</span>
+        <input type="text" class="form-control" name="id" required autofocus>
+ 
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Inquire</button>
+      </form>
+      
+	{% if order_status: %} <p class="order_status" id="order">
+		<div>
+		    {% for goods in order_status %}
+		      <div class="row">
+			{% for a in goods %}
+		        <div class="col-md-4">a</div>
+			{% endfor %}
+		</div>
+	    {% endfor %}
+	  </div> 
+	{% endif %}
+
+      <footer class="footer">
+        <p>&copy; 2016 Spring, IDB.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
