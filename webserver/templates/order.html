@@ -52,8 +52,14 @@
       </div>
 
 	<h1>Current Order List</h1>
-
-	  <div>
+	  <div>{{data}}</div>
+  	    <div>
+            <div class="row">
+            <div class="col-md-4">Orderid</div>
+            <div class="col-md-4">date</div>
+            <div class="col-md-4">status</div>
+            <div class="col-md-4">total price</div>
+            </div>
 	    {% for n in data %}
 	      <div class="row">
 		{% for m in n %}
@@ -75,6 +81,13 @@
       
 	{% if order_status: %} <p class="order_status" id="order">
 		<div>
+		<div>{{order_status}}</div>
+ 		 <div>
+	            <div class="row">
+	            <div class="col-md-4">Goodid</div>
+	            <div class="col-md-4">Quantity</div>
+	            </div>
+	   
 		    {% for goods in order_status %}
 		      <div class="row">
 			{% for a in goods %}

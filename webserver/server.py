@@ -247,7 +247,7 @@ def signin():
         isCorrect = True
 	session['userid'] = res[0]
         break
-
+    cur.close()
     if isCorrect:
       return redirect('/main')
     else:
@@ -280,6 +280,81 @@ def sell():
       error = 'Invalid input, try again.'
       return render_template('sell.html', error = error)
   return render_template('sell.html')
+
+def search_order(userid):
+  parameters=(userid)
+  cursor=g.conn.execute('select orderid, orderdate, state, totalprice from order_list where userid=%s',userid)
+  order_list=[]
+  for res in cursor:
+    order=[]
+    for att in res:
+      order.append(att)
+    order_list.append(order)
+
+  cursor.close()
+  return order_list
+
+@app.route('/order', methods=['GET','POST'])
+def order():
+  error=None
+  order=None
+  userid=session['userid']
+  order_list=search_order(userid)
+
+
+  content=dict(data=order_list, error=error, order_status=order)
+  return render_template('order.html', **content)
+
+@app.route('/order_state',methods=['GET','POST'])
+def order_status():
+  print 'do it'
+  error=None
+  order=None 
+  userid=session['userid']
+  order_list=search_order(userid)
+   
+  print request.method
+  if request.method=='POST':
+    print 'in_if'
+    orderid=request.form['id']
+    print orderid
+    print userid
+    userid_is_correct=true
+    tot=0
+    parameters=(orderid)
+
+
+
+
+    cursor=g.conn.execute('select userid from order_list where orderid=%s',parameters)
+    for res in cursor:
+      if res[0]!=userid:
+        error='You cannot inquire an order which does not belong to you!'
+        print error
+        userid_is_correct=false
+      else:
+        tot=tot+1
+    cursor.close()
+  
+    print tot
+    if tot==1:
+      if userid_is_correct:
+        cursor=g.conn.execute('select gooid, quantity from order_detail where orderid=%s',parameters)
+        order=[]
+        for res in cursor:
+          goods=[]
+          for a in res:
+            goods.append(a)
+          order.append(goods)
+    else:
+      error='Invalid order ID!'
+      print error
+      
+  
+  content=dict(data=order_list, error=error, order_status=order)
+  return render_template('order.html', **content)
+
+
 
 
 if __name__ == "__main__":
