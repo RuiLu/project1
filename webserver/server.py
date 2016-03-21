@@ -372,11 +372,13 @@ def buy():
     goods = []
     for res in cursor:
       items = []
+      print res[6]
       for a in res:
         items.append(a)
         print a
       goods.append(items)
-    return render_template('buy.html')
+      context = dict(data = goods)
+    return render_template('buy.html', **context)
 
 if __name__ == "__main__":
   import click
