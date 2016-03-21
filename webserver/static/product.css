@@ -78,6 +78,23 @@ body {
   }
 }
 
+.head {
+  width: 60px;
+  margin: 3px;
+  color: white;
+  border: none;
+}
+
+#home {
+  background-color: #3385ff;
+} 
+
+#signout {
+  width: 60px;
+  margin: 1px;
+  color: grey;
+}
+
 #item {
   background-color: #f6f6f6;
   height: 220px;
@@ -113,22 +130,6 @@ body {
   height: 50px;
 }
 
-.head {
-  width: 60px;
-  margin: 3px;
-  color: white;
-  border: none;
-}
-
-#home {
-  background-color: #3385ff;
-} 
-
-#signout {
-  width: 20px;
-  margin: 1px;
-  color: grey;
-}
 
 hr {
   margin: 1px;
