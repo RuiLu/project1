@@ -358,7 +358,7 @@ def order_status():
 
 
 @app.route('/product', methods=['GET', 'POST'])
-def buy():
+def product():
   error = None
   if request.method == 'POST':
     search = request.form['search']
@@ -375,7 +375,7 @@ def buy():
       for i in range(0, 8):
         if i == 6:
           html = '<img src="' + res[6] + '" class="img-rounded" height="200" id="pic" float="right">'
-          item.append(html)
+          items.append(html)
           continue
         items.append(res[i])
       goods.append(items)
