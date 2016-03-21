@@ -260,7 +260,7 @@ def sell():
   if request.method == 'POST':
     name = request.form['name']
     print name
-    price = int(request.form['price'])
+    price = float(request.form['price'])
     print price
     description = request.form['description']
     print description
