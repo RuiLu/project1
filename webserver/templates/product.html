@@ -84,17 +84,14 @@
       </form>
       <p></p>
 
-      {% for item in goods:
-            html = '<img src="' + item[6] +  '" class="img-rounded" height="200" id="pic" float="right">'
-      %}
+      {% for item in goods%}
       <div class="row" id="item">
         <div class="col-xs-5">
-          {{% html %}}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/USA_10096-7-8_HDR_Antelope_Canyon_Luca_Galuzzi_2007.jpg" class="img-rounded" height="200" id="pic" float="right">
         </div>
         <div class="col-xs-7" id="info">
           <div class="row" id="property">
-            <div class="col-xs-12" id="name">{{% item[1] %}}</div>
-           
+            <div class="col-xs-12" id="name">{{% item[1] %}}</div> 
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="price">
