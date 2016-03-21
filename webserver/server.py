@@ -379,7 +379,7 @@ def buy():
           item.append(code)
         else:
           items.append(res[i])
-        print a
+        print res[6]
       goods.append(items)
       context = dict(data = goods)
     return render_template('buy.html', **context)
