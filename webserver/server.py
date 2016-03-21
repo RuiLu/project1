@@ -281,16 +281,16 @@ def sell():
       return render_template('sell.html', error = error)
   return render_template('sell.html')
 
-# @app.route('/buy', methods=['GET', 'POST'])
-# def buy():
-#   error = None
-#   if request.method == 'POST':
-#     search = request.form['search']
-#     minAmount = int(request.form['min'])
-#     maxAmount = int(request.form['max'])
-#     seller = request.form['seller']
-#     print search, minAmount, maxAmount, seller
-#   return render_template('buy.html')
+@app.route('/buy', methods=['GET', 'POST'])
+def buy():
+  error = None
+  if request.method == 'POST':
+    search = request.form['search']
+    minAmount = int(request.form['min'])
+    maxAmount = int(request.form['max'])
+    seller = request.form['seller']
+    print search, minAmount, maxAmount, seller
+  return render_template('buy.html')
 
 def search_order(userid):
   print 'before search'
