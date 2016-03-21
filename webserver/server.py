@@ -372,6 +372,7 @@ def buy():
     goods = []
     for res in cursor:
       items = []
+      res[6] = '<img src="' + res[6] + '" class="img-rounded" height="200" id="pic" float="right"> '
       print res[6]
       for a in res:
         items.append(a)
