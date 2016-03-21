@@ -367,7 +367,16 @@ def buy():
     seller = request.form['seller']
     print search, minAmount, maxAmount, seller
     return render_template('buy.html')
-  return render_template('buy.html')
+  else:
+    cursor = g.conn.execute('select * from goods')
+    goods = []
+    for res in cursor
+      items = []
+      for a in res:
+        items.append(a)
+        print a
+      goods.append(items)
+    return render_template('buy.html')
 
 if __name__ == "__main__":
   import click
