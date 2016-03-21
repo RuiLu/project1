@@ -372,14 +372,14 @@ def buy():
     goods = []
     for res in cursor:
       items = []
-      for i in range(8):
+      for i in range(0, 7):
         if i == 6:
           code = '<img src="' + res[i] + '" class="img-rounded" height="200" id="pic" float="right">'
           print code
           item.append(code)
         else:
           items.append(res[i])
-        print res[i]
+        print res[i], i
       goods.append(items)
       context = dict(data = goods)
     return render_template('buy.html', **context)
