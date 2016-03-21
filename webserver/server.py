@@ -357,7 +357,7 @@ def order_status():
   return render_template('order.html', **content)
 
 
-@app.route('/buy', methods=['GET', 'POST'])
+@app.route('/product', methods=['GET', 'POST'])
 def buy():
   error = None
   if request.method == 'POST':
@@ -366,6 +366,7 @@ def buy():
     maxAmount = int(request.form['max'])
     seller = request.form['seller']
     print search, minAmount, maxAmount, seller
+    return render_template('buy.html')
   return render_template('buy.html')
 
 if __name__ == "__main__":
