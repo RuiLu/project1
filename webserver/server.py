@@ -370,7 +370,7 @@ def buy():
   else:
     cursor = g.conn.execute('select * from goods')
     goods = []
-    for res in cursor
+    for res in cursor:
       items = []
       for a in res:
         items.append(a)
