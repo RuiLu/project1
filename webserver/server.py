@@ -374,10 +374,6 @@ def product():
       items = []
       for i in range(0, 8):
         print res[i]
-        if i == 6:
-          html = '<img src="' + res[i] + '" class="img-rounded" height="200" id="pic" float="right">'
-          items.append(html)
-          continue
         items.append(res[i])
       goods.append(items)
     context = dict(goods=goods)
