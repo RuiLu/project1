@@ -375,6 +375,11 @@ def product():
       for i in range(0, 8):
         print res[i]
         items.append(res[i])
+      cursor = g.conn.execute('select username from user_account u, goods g where u.userid = %s', res[7])
+      name = []
+      for result in cursor:
+        name.append(result['username'])
+      item.append(name[0])
       goods.append(items)
     context = dict(goods=goods)
     return render_template('product.html', **context)
