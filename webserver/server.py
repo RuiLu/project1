@@ -372,10 +372,13 @@ def buy():
     goods = []
     for res in cursor:
       items = []
-      res[6] = '<img src="' + res[6] + '" class="img-rounded" height="200" id="pic" float="right"> '
-      print res[6]
-      for a in res:
-        items.append(a)
+      for i in range(8):
+        if i == 6:
+          code = '<img src="' + res[i] + '" class="img-rounded" height="200" id="pic" float="right">'
+          print code
+          item.append(code)
+        else:
+          items.append(res[i])
         print a
       goods.append(items)
       context = dict(data = goods)
