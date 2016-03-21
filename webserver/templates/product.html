@@ -120,9 +120,9 @@
                 <div class="form-group">
                   <select id="quantity">
                     <option value="" disabled="disabled" style="display:none" selected="selected">choose quantity</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    {% for i in range(item[4]) %}
+                    <option value="{{i}}">i</option>
+                    {% endfor %}
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Add to cart</button>
