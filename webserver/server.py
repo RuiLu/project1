@@ -376,7 +376,7 @@ def buy():
         items.append(res[i])
         print res[i], i
       goods.append(items)
-      context = dict(data = goods)
+      context = dict(goods = goods)
     return render_template('buy.html', **context)
 
 if __name__ == "__main__":
