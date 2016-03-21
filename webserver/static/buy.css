@@ -113,6 +113,16 @@ body {
   height: 50px;
 }
 
+#home {
+  background-color: #3385ff;
+} 
+
+#signout {
+  width: 20px;
+  margin: 1px;
+  color: grey;
+}
+
 hr {
   margin: 1px;
   margin-bottom: 8px;
