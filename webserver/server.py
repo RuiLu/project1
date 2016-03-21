@@ -366,18 +366,21 @@ def buy():
     maxAmount = int(request.form['max'])
     seller = request.form['seller']
     print search, minAmount, maxAmount, seller
-    return render_template('buy.html')
+    return render_template('product.html')
   else:
     cursor = g.conn.execute('select * from goods')
     goods = []
     for res in cursor:
       items = []
       for i in range(0, 8):
+        if i == 6:
+          html = '<img src="' + res[6] + '" class="img-rounded" height="200" id="pic" float="right">'
+          item.append(html)
+          continue
         items.append(res[i])
-        print res[i], i
       goods.append(items)
     context = dict(goods = goods)
-    return render_template('buy.html', **context)
+    return render_template('product.html', **context)
 
 if __name__ == "__main__":
   import click
