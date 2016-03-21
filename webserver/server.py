@@ -373,13 +373,14 @@ def product():
     for res in cursor:
       items = []
       for i in range(0, 8):
+        print res[i]
         if i == 6:
-          html = '<img src="' + res[6] + '" class="img-rounded" height="200" id="pic" float="right">'
+          html = '<img src="' + res[i] + '" class="img-rounded" height="200" id="pic" float="right">'
           items.append(html)
           continue
         items.append(res[i])
       goods.append(items)
-    context = dict(goods = goods)
+    context = dict(goods=goods)
     return render_template('product.html', **context)
 
 if __name__ == "__main__":
