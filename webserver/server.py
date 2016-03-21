@@ -254,6 +254,18 @@ def signin():
       error = 'Invalid username or password, try again.'
   return render_template('signin.html', error = error)
 
+@app.route('/buy', methods=['POST', 'GET'])
+def buy():
+  error = None
+  if request.method == 'POST':
+    search = request.form['search']
+    minAmount = request.form['min']
+    maxAmount = request.form['max']
+    seller = request.form['seller']
+    print search, minAmount, maxAmount, seller
+  else:
+    return render_template('buy.html')
+
 @app.route('/sell', methods=['GET','POST'])
 def sell():
   error = None
