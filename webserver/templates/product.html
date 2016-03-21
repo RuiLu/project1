@@ -84,28 +84,29 @@
       </form>
       <p></p>
 
-      {% for item in goods%}
+      {% for item in goods %}
       <div class="row" id="item">
         <div class="col-xs-5">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/USA_10096-7-8_HDR_Antelope_Canyon_Luca_Galuzzi_2007.jpg" class="img-rounded" height="200" id="pic" float="right">
+          <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/USA_10096-7-8_HDR_Antelope_Canyon_Luca_Galuzzi_2007.jpg" class="img-rounded" height="200" id="pic" float="right"> -->
+          {{ item[6] }}
         </div>
         <div class="col-xs-7" id="info">
           <div class="row" id="property">
-            <div class="col-xs-12" id="name">{{% item[1] %}}</div> 
+            <div class="col-xs-12" id="name">{{ item[1] }}</div> 
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="price">
-            <div class="col-xs-5">{{% item[2] %}}</div>
-            <div class="col-xs-7">{{% item[4] %}}</div>
+            <div class="col-xs-5">{{ item[2] }}</div>
+            <div class="col-xs-7">{{ item[4] }}</div>
           </div>
           <div class="row" id="date">
-            <div class="col-xs-5">{{% item[5] %}}</div>
-             <div class="col-xs-7" id="seller">{{% item[7] %}}</div>
+            <div class="col-xs-5">{{ item[5] }}</div>
+             <div class="col-xs-7" id="seller">{{ item[7] }}</div>
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="description">
             <div class="col-xs-12">
-              <p>{{% item[3] %}}</p>
+              <p>{{ item[3] }}</p>
             </div>
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
