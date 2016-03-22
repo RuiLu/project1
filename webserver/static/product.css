@@ -31,6 +31,63 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
+.head {
+  margin: 3px;
+  color: white;
+  border: none;
+}
+
+#home {
+  background-color: #3385ff;
+} 
+
+#signout {
+  width: 100px;
+  margin: 1px;
+  color: grey;
+}
+
+#item {
+  background-color: #f6f6f6;
+  height: 220px;
+}
+
+#info {
+  background-color: #f0f0f5;
+  height: 220px;
+}
+
+#pic {
+  max-width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#property {
+  height: 30px;
+  margin-top: 10px;
+}
+
+#price #date{
+  height: 30px;
+}
+
+#name {
+  font-size: 20px;
+  font-family: Times;
+  font-weight: bold;
+}
+
+#description {
+  height: 50px;
+}
+
+
+hr {
+  margin: 1px;
+  margin-bottom: 8px;
+}
+
 /* Customize container */
 @media (min-width: 768px) {
   .container {
@@ -78,60 +135,3 @@ body {
   }
 }
 
-.head {
-  
-  margin: 3px;
-  color: white;
-  border: none;
-}
-
-#home {
-  background-color: #3385ff;
-} 
-
-#signout {
-  width: 100px;
-  margin: 1px;
-  color: grey;
-}
-
-#item {
-  background-color: #f6f6f6;
-  height: 220px;
-}
-
-#info {
-  background-color: #f0f0f5;
-  height: 220px;
-}
-
-#pic {
-  max-width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-}
-#property {
-  height: 30px;
-  margin-top: 10px;
-}
-#price #date{
-  height: 30px;
-
-}
-
-#name {
-  font-size: 20px;
-  font-family: Times;
-  font-weight: bold;
-}
-
-#description {
-  height: 50px;
-}
-
-
-hr {
-  margin: 1px;
-  margin-bottom: 8px;
-}
