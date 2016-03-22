@@ -356,14 +356,27 @@ def product():
   if request.method == 'POST':
     search = request.form['search']
     minAmount = request.form['min']
-    if minAmount == '':
-      print minAmount, 'min is None'
     maxAmount = request.form['max']
     seller = request.form['seller']
-    error = 'nothing...'
+
     if minAmount != '' and maxAmount != '' and seller != '':
       print search, minAmount, maxAmount, seller
-    return render_template('product.html', error=error)
+      search = '%' + search + '%'
+      print search
+      cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s', search)
+      goods = []
+      for res in cursor:
+        items = []
+        for i in range(0, 8):
+          print res[i]
+          items.append(res[i])
+        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        name = []
+        for result in cursor:
+          name.append(result['name'])
+          items.append(result['name'])
+        goods.append(items)
+      return render_template('product.html', error=error)
   else:
     cursor = g.conn.execute('select * from goods')
     goods = []
