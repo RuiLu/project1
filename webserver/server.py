@@ -432,8 +432,8 @@ def product():
       if mi > ma:
         error = 'Maximal price should not smaller than minimum price.'
         return render_template('product.html', error=error)
-
-      cursor = g.conn.execute('SELECT * FROM goods WHERE price >= mi AND price <= ma')
+      parameters = (mi, ma)
+      cursor = g.conn.execute('SELECT * FROM goods WHERE price >= %s AND price <= %s', parameters)
       goods = []
       for res in cursor:
         items = []
