@@ -259,19 +259,13 @@ def sell():
   error = None
   if request.method == 'POST':
     name = request.form['name']
-    print name
     price = float(request.form['price'])
-    print price
     description = request.form['description']
-    print description
     quantity = int(request.form['quantity'])
-    print quantity
     picture = request.form['picture']
-    print picture
     i = datetime.datetime.now()
     date = i.isoformat()
     userid = session['userid']
-    print date
     parameters = (name, price, description, quantity, date, picture, userid)
     try:
       g.conn.execute('INSERT INTO goods(name,price,description,quantity,date,picture,userid) VALUES (%s,%s,%s,%s,%s,%s,%s)', parameters)
@@ -361,6 +355,7 @@ def order_status():
 def product():
   error = None
   if request.method == 'POST':
+    print 'i\'m in'
     search = request.form['search']
     minAmount = int(request.form['min'])
     maxAmount = int(request.form['max'])
