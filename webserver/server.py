@@ -373,7 +373,7 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
-      if len(uid) = 0:
+      if len(uid) == 0:
         error = 'Invaid seller name'
         return render_template('product.html', error=error)
       print uid[0]
@@ -401,7 +401,7 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
-      if len(uid) = 0:
+      if len(uid) == 0:
         error = 'Invaid seller name'
         return render_template('product.html', error=error)
       print uid[0]
