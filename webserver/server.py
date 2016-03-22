@@ -365,10 +365,17 @@ def product():
       mi = float(minAmount)
       ma = float(maxAmount)
 
+      if mi > ma:
+        error = 'Maximal price should not smaller than minimum price.'
+        return render_template('product.html', error=error)
+
       cursor = g.conn.execute('SELECT userid FROM user_account WHERE name = %s', seller)
       uid = []
       for result in cursor:
         uid.append(result['userid'])
+      if len(uid) = 0:
+        error = 'Invaid seller name'
+        return render_template('product.html', error=error)
       print uid[0]
       parameters = (search, mi, ma, uid[0])
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s AND price >= %s AND price <= %s AND userid = %s', parameters)
@@ -389,8 +396,38 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
+    elif minAmount == '' and maxAmount == '' and seller != '':
+      cursor = g.conn.execute('SELECT userid FROM user_account WHERE name = %s', seller)
+      uid = []
+      for result in cursor:
+        uid.append(result['userid'])
+      if len(uid) = 0:
+        error = 'Invaid seller name'
+        return render_template('product.html', error=error)
+      print uid[0]
+
+      parameters = (search, uid[0])
+      cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s AND userid = %s', parameters)
+      goods = []
+      for res in cursor:
+        items = []
+        for i in range(0, 8):
+          print res[i]
+          items.append(res[i])
+        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        name = []
+        for result in cursor:
+          name.append(result['name'])
+          items.append(result['name'])
+        goods.append(items)
+      if len(goods) == 0:
+        error = 'nothing...'
+        return render_template('product.html', error=error)
+      context = dict(goods = goods)
+      return render_template('product.html', **context)
+
     else:
-      return render_template('product.html', error=error)
+      return redirect('/product')
   else:
     cursor = g.conn.execute('select * from goods')
     goods = []
