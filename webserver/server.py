@@ -376,7 +376,11 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
-      return render_template('product.html', error=error)
+      if len(goods) == 0:
+        error = 'nothing...'
+        return render_template('product.html', error=error)
+      context = dict(goods = goods)
+      return render_template('product.html', **context)
   else:
     cursor = g.conn.execute('select * from goods')
     goods = []
