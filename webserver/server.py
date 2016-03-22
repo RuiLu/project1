@@ -359,7 +359,7 @@ def search():
   maxAmount = int(request.form['max'])
   seller = request.form['seller']
   print search, minAmount, maxAmount, seller
-  return render_template('product.html', error=error)
+  return redirect('/product')
 
 @app.route('/product', methods=['GET', 'POST'])
 def product():
