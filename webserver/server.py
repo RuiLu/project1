@@ -367,7 +367,8 @@ def product():
 
       cursor = g.conn.execute('SELECT userid FROM user_account WHERE name = %s', seller)
       uid = []
-      uid.append(cursor['userid'])
+      for result in cursor:
+        uid.append(result['name'])
       print uid[0]
       
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s', search)
