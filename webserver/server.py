@@ -359,7 +359,7 @@ def product():
     maxAmount = request.form['max']
     seller = request.form['seller']
 
-    if minAmount != '' and maxAmount != '' and seller != '':
+    if search != '' and minAmount != '' and maxAmount != '' and seller != '':
       print search, minAmount, maxAmount, seller
       search = '%' + search + '%'
       mi = float(minAmount)
@@ -396,7 +396,7 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
-    elif minAmount == '' and maxAmount == '' and seller != '':
+    elif search != '' and  minAmount == '' and maxAmount == '' and seller != '':
       cursor = g.conn.execute('SELECT userid FROM user_account WHERE name = %s', seller)
       uid = []
       for result in cursor:
@@ -425,7 +425,7 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
-    elif search == '' and seller == '':
+    elif search == '' and seller == '' and minAmount != '' and maxAmount != '': 
       mi = float(minAmount)
       ma = float(maxAmount)
 
@@ -451,7 +451,7 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
-    elif seller == '':
+    elif seller == '' and search != '' and minAmount != '' and maxAmount != '':
       mi = float(minAmount)
       ma = float(maxAmount)
       search = '%' + search + '%'
