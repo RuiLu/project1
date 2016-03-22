@@ -405,7 +405,7 @@ def product():
         error = 'Invaid seller name'
         return render_template('product.html', error=error)
       print uid[0]
-
+      search = '%' + search + '%'
       parameters = (search, uid[0])
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s AND userid = %s', parameters)
       goods = []
