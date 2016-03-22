@@ -373,13 +373,13 @@ def product():
     for res in cursor:
       items = []
       for i in range(0, 8):
-        print res[i]
         items.append(res[i])
-      cursor = g.conn.execute('select username from user_account u, goods g where u.userid = %s', res[7])
+      cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
       name = []
       for result in cursor:
-        name.append(result['username'])
-      item.append(name[0])
+        name.append(result['name'])
+        print result['name']
+        items.append(result['name'])
       goods.append(items)
     context = dict(goods=goods)
     return render_template('product.html', **context)
