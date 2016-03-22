@@ -350,34 +350,20 @@ def order_status():
   content=dict(data=order_list, error=error, order_status=order)
   return render_template('order.html', **content)
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-  print 'heihei'
-  error = None
-  search = request.form['search']
-  minAmount = int(request.form['min'])
-  if minAmount is None:
-    print 'min is none'
-  maxAmount = int(request.form['max'])
-  if maxAmount is None:
-    print 'max is none'
-  seller = request.form['seller']
-  if seller is None:
-    print 'seller is none'
-
-  return redirect('/product')
-
 @app.route('/product', methods=['GET', 'POST'])
 def product():
   error = None
   if request.method == 'POST':
-    print 'heihei'
     search = request.form['search']
-    minAmount = int(request.form['min'])
-    maxAmount = int(request.form['max'])
+    minAmount = request.form['min']
+    if minAmount == '':
+      print minAmount, 'min is None'
+    maxAmount = request.form['max']
     seller = request.form['seller']
-    print search, minAmount, maxAmount, seller
-    return render_template('product.html')
+    error = 'nothing...'
+    if minAmount != '' and maxAmount != '' and seller != '':
+      print search, minAmount, maxAmount, seller
+    return render_template('product.html', error=error)
   else:
     cursor = g.conn.execute('select * from goods')
     goods = []
