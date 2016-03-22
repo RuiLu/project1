@@ -50,7 +50,7 @@
         <h3 class="text-muted">FindYa</h3>
       </div>
 
-      <form action="/search">
+      <form method="POST" action="/search">
         <div class="row">
           <div class="col-xs-12">
             <div class="input-group">
@@ -62,7 +62,7 @@
             </div>
           </div>
         </div>
-      </form>
+      
         <p></p>
         <div class="row">
           <div class="col-xs-12">
@@ -82,7 +82,7 @@
             </div>
           </div>
         </div>
-
+      </form>
       <p></p>
 
       {% for item in goods %}
