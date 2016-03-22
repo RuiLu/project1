@@ -451,7 +451,32 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
-
+    elif seller == '':
+      mi = float(minAmount)
+      ma = float(maxAmount)
+      search = '%' + search + '%'
+      if mi > ma:
+        error = 'Maximal price should not smaller than minimum price.'
+        return render_template('product.html', error=error)
+      parameters = (search, mi, ma)
+      cursor = g.conn.execute('SELECT * FROM goods WHERE name = %s and price >= %s AND price <= %s', parameters)
+      goods = []
+      for res in cursor:
+        items = []
+        for i in range(0, 8):
+          print res[i]
+          items.append(res[i])
+        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        name = []
+        for result in cursor:
+          name.append(result['name'])
+          items.append(result['name'])
+        goods.append(items)
+      if len(goods) == 0:
+        error = 'nothing...'
+        return render_template('product.html', error=error)
+      context = dict(goods = goods)
+      return render_template('product.html', **context) 
     else:
       error = 'Invalid search...'
       return render_template('product.html', error = error)
