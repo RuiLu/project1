@@ -477,7 +477,7 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
-    elif minAmount == '' and maxAmount == '' and seller == '':
+    elif search != '' and minAmount == '' and maxAmount == '' and seller == '':
       search = '%' + search + '%'
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s', search)
       print search
