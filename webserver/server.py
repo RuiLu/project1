@@ -362,7 +362,14 @@ def product():
     if minAmount != '' and maxAmount != '' and seller != '':
       print search, minAmount, maxAmount, seller
       search = '%' + search + '%'
-      print search
+      mi = float(minAmount)
+      ma = float(maxAmount)
+
+      cursor = g.conn.execute('SELECT userid FROM user_account WHERE name = %s', seller)
+      uid = []
+      uid.append(cursor['userid'])
+      print uid[0]
+      
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s', search)
       goods = []
       for res in cursor:
@@ -381,6 +388,7 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
+    elif 
   else:
     cursor = g.conn.execute('select * from goods')
     goods = []
