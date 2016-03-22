@@ -350,6 +350,15 @@ def order_status():
   content=dict(data=order_list, error=error, order_status=order)
   return render_template('order.html', **content)
 
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+  print 'heihei'
+  search = request.form['search']
+  minAmount = int(request.form['min'])
+  maxAmount = int(request.form['max'])
+  seller = request.form['seller']
+  print search, minAmount, maxAmount, seller
+  return render_template('product.html')
 
 @app.route('/product', methods=['GET', 'POST'])
 def product():
