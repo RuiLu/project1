@@ -356,9 +356,15 @@ def search():
   error = None
   search = request.form['search']
   minAmount = int(request.form['min'])
+  if minAmount is None:
+    print 'min is none'
   maxAmount = int(request.form['max'])
+  if maxAmount is None:
+    print 'max is none'
   seller = request.form['seller']
-  print search, minAmount, maxAmount, seller
+  if seller is None:
+    print 'seller is none'
+
   return redirect('/product')
 
 @app.route('/product', methods=['GET', 'POST'])
