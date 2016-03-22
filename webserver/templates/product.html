@@ -50,7 +50,7 @@
         <h3 class="text-muted">FindYa</h3>
       </div>
 
-      <form method="POST" action="/search">
+      <form method="POST" action="/product">
         <div class="row">
           <div class="col-xs-12">
             <div class="input-group">
@@ -84,7 +84,9 @@
         </div>
       </form>
       <p></p>
-
+      {% if error %}
+      <p>{{ error }}</p>
+      {% endif %}
       {% for item in goods %}
       <div class="row" id="item">
         <div class="col-xs-5">
