@@ -1,3 +1,45 @@
+#item {
+  background-color: #f6f6f6;
+  height: 220px;
+}
+
+#info {
+  background-color: #f0f0f5;
+  height: 220px;
+}
+
+#pic {
+  max-width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#property {
+  height: 30px;
+  margin-top: 10px;
+}
+
+#price #date{
+  height: 30px;
+}
+
+#name {
+  font-size: 20px;
+  font-family: Times;
+  font-weight: bold;
+}
+
+#description {
+  height: 50px;
+}
+
+
+hr {
+  margin: 1px;
+  margin-bottom: 8px;
+}
+
+
 /* Space out content a bit */
 body {
   padding-top: 20px;
@@ -17,7 +59,6 @@ body {
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
 }
-
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -70,19 +111,38 @@ body {
 
 .custom {
   height: 150px;
-  margin: 6px;
+  margin: 5px;
   color: white;
   border: none;
 }
 
 .head {
-  width: 100px;
+  width: 60px;
   margin: 3px;
   color: white;
   border: none;
 }
 
-#ho {
+#b1 {
+  background-color: #ff3333;
+} 
+#b2 {
+  background-color: #ff751a;
+}
+#b3 {
+  background-color: #ffd633;
+}
+#b4 {
+  background-color: #47d147;
+} 
+#b5 {
+  background-color: #00ccff;
+} 
+#b6 {
+  background-color: #3385ff;
+}
+
+#home {
   background-color: #3385ff;
 } 
 
@@ -97,52 +157,17 @@ body {
   font-size: 16px;
 }
 
-#si {
-  width: 60px;
+#signout {
+  width: 20px;
   margin: 1px;
   color: grey;
 }
 
-#item {
-  background-color: #f6f6f6;
-  height: 220px;
-}
-
-#info {
-  background-color: #f0f0f5;
-  height: 220px;
-}
-
-#pic {
-  max-width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#property {
-  height: 30px;
-  margin-top: 10px;
-}
-
-#price #date{
-  height: 30px;
-}
-
-#name {
-  font-size: 20px;
-  font-family: Times;
-  font-weight: bold;
-}
-
-#description {
-  height: 50px;
-}
+/*#signout {
+  background-color: #d9d9d9;
+}*/
 
 
-hr {
-  margin: 1px;
-  margin-bottom: 8px;
-}
 
 
 /* Responsive: Portrait tablets and up */
