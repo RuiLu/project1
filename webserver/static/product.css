@@ -17,11 +17,14 @@ body {
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
+  color: #000000;
+  font-size: 40px;
 }
 
 /* Custom page footer */
@@ -31,18 +34,90 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p {
+  margin-top: 28px;
+}
+
+.marketing h3 {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.custom {
+  height: 150px;
+  margin: 5px;
+  color: white;
+  border: none;
+}
+
 .head {
+  width: 60px;
   margin: 3px;
   color: white;
   border: none;
+}
+
+#b1 {
+  background-color: #ff3333;
+} 
+#b2 {
+  background-color: #ff751a;
+}
+#b3 {
+  background-color: #ffd633;
+}
+#b4 {
+  background-color: #47d147;
+} 
+#b5 {
+  background-color: #00ccff;
+} 
+#b6 {
+  background-color: #3385ff;
 }
 
 #home {
   background-color: #3385ff;
 } 
 
+#warning {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#hint {
+  font-style: bold;
+  font-size: 16px;
+}
+
 #signout {
-  width: 100px;
+  width: 20px;
   margin: 1px;
   color: grey;
 }
@@ -88,33 +163,6 @@ hr {
   margin-bottom: 8px;
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

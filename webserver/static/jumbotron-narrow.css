@@ -126,46 +126,6 @@ body {
 }*/
 
 
-#item {
-  background-color: #f6f6f6;
-  height: 220px;
-}
-
-#info {
-  background-color: #f0f0f5;
-  height: 220px;
-}
-
-#pic {
-  max-width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-}
-#property {
-  height: 30px;
-  margin-top: 10px;
-}
-#price #date{
-  height: 30px;
-
-}
-
-#name {
-  font-size: 20px;
-  font-family: Times;
-  font-weight: bold;
-}
-
-#description {
-  height: 50px;
-}
-
-
-hr {
-  margin: 1px;
-  margin-bottom: 8px;
-}
 
 
 /* Responsive: Portrait tablets and up */
