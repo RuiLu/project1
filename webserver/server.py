@@ -385,9 +385,9 @@ def product():
         for i in range(0, 8):
           print res[i]
           items.append(res[i])
-        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        cur = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
         name = []
-        for result in cursor:
+        for result in cur:
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
@@ -414,9 +414,9 @@ def product():
         for i in range(0, 8):
           print res[i]
           items.append(res[i])
-        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        cur = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
         name = []
-        for result in cursor:
+        for result in cur:
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
@@ -440,9 +440,9 @@ def product():
         for i in range(0, 8):
           print res[i]
           items.append(res[i])
-        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        cur = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
         name = []
-        for result in cursor:
+        for result in cur:
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
@@ -466,9 +466,9 @@ def product():
         for i in range(0, 8):
           print res[i]
           items.append(res[i])
-        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        cur = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
         name = []
-        for result in cursor:
+        for result in cur:
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
@@ -480,15 +480,16 @@ def product():
     elif minAmount == '' and maxAmount == '' and seller == '':
       search = '%' + search + '%'
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s', search)
+      print search
       goods = []
       for res in cursor:
         items = []
         for i in range(0, 8):
           print res[i]
           items.append(res[i])
-        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        cur = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
         name = []
-        for result in cursor:
+        for result in cur:
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
