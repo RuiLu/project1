@@ -354,7 +354,7 @@ def order_status():
 @app.route('/product', methods=['GET', 'POST'])
 def product():
   error = None
-  if request.method == 'POST':
+  if request.method == 'GET':
     print 'heihei'
     search = request.form['search']
     minAmount = int(request.form['min'])
