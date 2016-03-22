@@ -476,7 +476,27 @@ def product():
         error = 'nothing...'
         return render_template('product.html', error=error)
       context = dict(goods = goods)
-      return render_template('product.html', **context) 
+      return render_template('product.html', **context)
+    elif minAmount == '' and maxAmount == '' and seller == '':
+      search = '%' + search + '%'
+      cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s', search)
+      goods = []
+      for res in cursor:
+        items = []
+        for i in range(0, 8):
+          print res[i]
+          items.append(res[i])
+        cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+        name = []
+        for result in cursor:
+          name.append(result['name'])
+          items.append(result['name'])
+        goods.append(items)
+      if len(goods) == 0:
+        error = 'nothing...'
+        return render_template('product.html', error=error)
+      context = dict(goods = goods)
+      return render_template('product.html', **context)
     else:
       error = 'Invalid search...'
       return render_template('product.html', error = error)
