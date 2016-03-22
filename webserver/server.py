@@ -353,12 +353,13 @@ def order_status():
 @app.route('/search', methods=['GET', 'POST'])
 def search():
   print 'heihei'
+  error = None
   search = request.form['search']
   minAmount = int(request.form['min'])
   maxAmount = int(request.form['max'])
   seller = request.form['seller']
   print search, minAmount, maxAmount, seller
-  return render_template('product.html')
+  return render_template('product.html', error=error)
 
 @app.route('/product', methods=['GET', 'POST'])
 def product():
