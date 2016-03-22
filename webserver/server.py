@@ -355,7 +355,7 @@ def order_status():
 def product():
   error = None
   if request.method == 'POST':
-    print 'i\'m in'
+    print 'heihei'
     search = request.form['search']
     minAmount = int(request.form['min'])
     maxAmount = int(request.form['max'])
@@ -373,7 +373,6 @@ def product():
       name = []
       for result in cursor:
         name.append(result['name'])
-        print result['name']
         items.append(result['name'])
       goods.append(items)
     context = dict(goods=goods)
