@@ -388,7 +388,7 @@ def product():
         return render_template('product.html', error=error)
       context = dict(goods = goods)
       return render_template('product.html', **context)
-    elif:
+    else:
       return render_template('product.html', error=error)
   else:
     cursor = g.conn.execute('select * from goods')
