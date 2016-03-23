@@ -16,7 +16,8 @@ Read about it online.
 """
 
 
-import datetime
+from datetime import *
+import time
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -556,36 +557,33 @@ def cart():
   data=[]
   billinginfo=[]
   uid=session['userid']
-  
-  if request.method=='POST':
-    print 'get a POST'
-    goodid=request.form.get('goodid','')
-    billid=request.form.get('billingid','')
-
-    if goodid!='':
-       print 'goodid=%s' %goodid
-    if billid!='':
-       print 'billid=%s'  %billid
-    print 'ready to work'   
-  
+  tot=0
+  total=0
+  goods=set()
+  bills=set()
 
 
   cursor = g.conn.execute('SELECT g.goodid, g.name, g.price, c.quantity from cart_detail c, goods g where g.goodid=c.goodid and c.userid=%s',uid)
   print '*** first sql search successfully finished ***'
   for res in cursor:
+    tot=tot+1
     good=[]
+    goods.add(res[0])
     good.append(res[0])
     good.append(res[1])
     good.append(res[3])
-    good.append(str(float(res[2])*int(res[3])))
+    price=float(res[2])*int(res[3])
+    good.append(str(price))
+    total=total+price
     data.append(good)
   cursor.close()
-  print' cursor closed'
+  print 'cursor closed'
   cursor = g.conn.execute('SELECT billingid, billingaddress, cardno from billinginfo where userid=%s',uid)
   print '*** second sql search successfully finished ***'
   
   for res in cursor:
     bill=[]
+    bills.add(res[0])
     for a in res:
       bill.append(a)
     billinginfo.append(bill)
@@ -593,8 +591,62 @@ def cart():
   print 'finish sql search'
 
  
+ 
+  if request.method=='POST':
+    print 'get a POST'
+    goodid=request.form.get('goodid','')
+    billid=request.form.get('billingid','')
+
+    if goodid!='':
+      print goods
+      print 'goodid=%s' %goodid
+      if int(goodid) in goods:
+        try:
+          parameters=(uid,goodid)
+          print 'Try to delete'
+          print 'DELETE FROM cart_detail WHERE userid=%s AND goodid=%s' %parameters
+          cursor=g.conn.execute('DELETE FROM cart_detail WHERE userid=%s AND goodid=%s',parameters)
+          print 'sql delete finish'
+          cursor.close()
+          return redirect('/cart')
+        except:
+          error='Fail to delete!'
+          print error
+      else:
+        error='Goodid not found in cart!'
+        print error
+
+    elif billid!='':
+      print 'billid=%s'  %billid
+      if tot==0:
+        error2='The cart is empty!'
+      else:
+        print bills
+        if int(billid) in bills:
+          try:
+            print 'try to form a new order'
+            t=date.today()
+            print t
+            parameters=(uid,billid,t,'pending','%.2f'%total)
+            print 'parameters formed'
+            print 'Insert into order_list values(%s,%s,%s,\'%s\',%s)'%parameters
+            cursor=g.conn.execute('Insert into order_list values(%s,%s,%s,\'%s\',%s)',parameters)
+            for res in cursor:
+              print res
+            cursor.close()
+          except:
+            error2='fail to form order!'
+            print error2
+          
+        else:
+          error2='This is not your billing!'
+          print error2
+        
+    print 'ready to work'   
+  
+
   print 'maybe finished?'
-  content=dict(data=data,Billinginfo=billinginfo, error=error, error2=error2)
+  content=dict(data=data,Billinginfo=billinginfo, error=error, error2=error2, total='%.2f' %total)
   return render_template('cart.html',**content)
 
 
