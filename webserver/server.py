@@ -314,7 +314,7 @@ def order_status():
    
   print request.method
   if request.method=='POST':
-    orderid=request.form['id']
+    orderid=request.form.get('id','')
     if orderid!='':
       print orderid
       print userid
@@ -334,11 +334,12 @@ def order_status():
         else:
           tot=tot+1
       cursor.close()
+      print 'seem there exists this order'
   
       print tot
       if tot==1:
         if userid_is_correct:
-          cursor=g.conn.execute('select gooid, quantity from order_detail where orderid=%s',parameters)
+          cursor=g.conn.execute('select goodid, quantity from order_detail where orderid=%s',parameters)
           order=[]
           for res in cursor:
             goods=[]
@@ -622,21 +623,32 @@ def cart():
         error2='The cart is empty!'
       else:
         print bills
+        new_id=g.conn.execute('SELECT nextval(\'order_list_orderid_seq\')')
+        a=new_id.fetchone()
+        new_id.close()
         if int(billid) in bills:
           try:
+            print a[0]
             print 'try to form a new order'
             t=date.today()
             print t
-            parameters=(uid,billid,t,'pending','%.2f'%total)
+            parameters=(a[0],uid,int(billid),t,'pending','%.2f'%total)
             print 'parameters formed'
-            print 'Insert into order_list values(%s,%s,%s,\'%s\',%s)'%parameters
-            cursor=g.conn.execute('Insert into order_list values(%s,%s,%s,\'%s\',%s)',parameters)
-            for res in cursor:
-              print res
+            print 'Insert into order_list values(%s,%s,%s,\'%s\',\'%s\',%s);'%parameters
+           
+            cursor=g.conn.execute('Insert into order_list values(%s,%s,%s,%s,%s,%s);',parameters)
             cursor.close()
-          except:
+            
+            print 'Is that ok?'
+          except Exception as e:
+            print e
             error2='fail to form order!'
             print error2
+          for each in data:
+            parameters=(a[0],each[0],each[2])
+            g.conn.execute('Insert into order_detail values(%s,%s,%s);',parameters)
+          g.conn.execute('Delete from cart_detail where userid=%s',uid)
+          return redirect('/cart')
           
         else:
           error2='This is not your billing!'
