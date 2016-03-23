@@ -554,10 +554,15 @@ def addToCart():
   error = None
   if request.method == 'POST':
     number = request.form.get('number')
-    print number
-    name = request.form.get('name')
-    print number, name
-    return redirect('/product')
+    goodid = request.form.get('name')
+    me = session['userid']
+    print me
+    try:
+      parameters(me, goodid, number)
+      g.conn.execute("INSERT INTO cart_detail VALUES (%S,%S,%S)", parameters)
+    except:
+      return render_template('product.html', error = error)
+    return render_template('product.html')
   return redirect('/product')
 
 
