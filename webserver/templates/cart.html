@@ -63,7 +63,7 @@
 	    {% for n in data %}
 	      <div class="row">
 		{% for m in n %}
-	        <div class="col-md-3">m</div>
+	        <div class="col-md-3">{{m}}</div>
 		{% endfor %}
 	      </div>
 	    {% endfor %}
@@ -78,36 +78,35 @@
  
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Remove</button>
-      </form>
+        </form> 
       
-	{% if order_status: %} <p class="Billing Information" id="billinginfo">
+	<p class="Billing Information" id="billinginfo">
 		<div>
 	<!--	<div>{{Billinginfo}}</div> -->
  		 <div>
 	            <div class="row">
 	            <div class="col-md-4">Billing ID</div>
-	            <div class="col-md-4">Binnling Address</div>
+	            <div class="col-md-4">Billling Address</div>
 	            <div class="col-md-4">Card No.</div>
 	            </div>
 	   
 		    {% for bill in Billinginfo %}
 		      <div class="row">
 			{% for a in bill %}
-		        <div class="col-md-4">a</div>
+		        <div class="col-md-4">{{a}}</div>
 			{% endfor %}
 		</div>
 	    {% endfor %}
 	  </div> 
-	{% endif %}
-
- 	<form class="form-signin" method="POST" action="/cart">
+	
+ 	<form class="form-signin" method="POST" action="/cart"> 
         <h2 class="form-signin-heading">Please choose the billing of this order.</h2>
         {% if error2: %} <p class="error" id="warning"><strong>Error:</strong> {{ error2 }}</p> {% endif %}
         <label class="sr-only">ID</label><span id="hint">ID *</span>
         <input type="text" class="form-control" name="billingid" required autofocus>
  
         
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Remove</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
       </form>
 
       <footer class="footer">

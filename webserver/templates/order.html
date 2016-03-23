@@ -14,7 +14,7 @@
     <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{url_for('static', filename='jumbotrom=narrow.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='jumbotron-narrow.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='grid.css')}}" rel="stylesheet">   
@@ -52,7 +52,7 @@
       </div>
 
 	<h1>Current Order List</h1>
-	  <div>{{data}}</div>
+	<!--  <div>{{data}}</div> -->
   	    <div>
             <div class="row">
             <div class="col-md-3">Orderid</div>
@@ -63,13 +63,13 @@
 	    {% for n in data %}
 	      <div class="row">
 		{% for m in n %}
-	        <div class="col-md-3">m</div>
+	        <div class="col-md-3">{{m}}</div>
 		{% endfor %}
 	      </div>
 	    {% endfor %}
 	  </div>
 
-      <form class="form-signin" method="POST" action="/order_state">
+      <form class="form-signin" method="POST" action="/order">
         <h2 class="form-signin-heading">Please fill in the Order ID you want to inquire.</h2>
         {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
         <label class="sr-only">ID</label><span id="hint">ID *</span>
@@ -91,7 +91,7 @@
 		    {% for goods in order_status %}
 		      <div class="row">
 			{% for a in goods %}
-		        <div class="col-md-4">a</div>
+		        <div class="col-md-4">{{a}}</div>
 			{% endfor %}
 		</div>
 	    {% endfor %}

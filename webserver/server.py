@@ -290,6 +290,7 @@ def search_order(userid):
   print 'search order finished'
   return order_list
 
+'''
 @app.route('/order', methods=['GET','POST'])
 def order():
   error=None
@@ -300,8 +301,9 @@ def order():
 
   content=dict(data=order_list, error=error, order_status=order)
   return render_template('order.html', **content)
+'''
 
-@app.route('/order_state',methods=['GET','POST'])
+@app.route('/order',methods=['GET','POST'])
 def order_status():
   print 'do it'
   error=None
@@ -311,40 +313,40 @@ def order_status():
    
   print request.method
   if request.method=='POST':
-    print 'in_if'
     orderid=request.form['id']
-    print orderid
-    print userid
-    userid_is_correct=true
-    tot=0
-    parameters=(orderid)
+    if orderid!='':
+      print orderid
+      print userid
+      userid_is_correct=true
+      tot=0
+      parameters=(orderid)
 
 
 
 
-    cursor=g.conn.execute('select userid from order_list where orderid=%s',parameters)
-    for res in cursor:
-      if res[0]!=userid:
-        error='You cannot inquire an order which does not belong to you!'
-        print error
-        userid_is_correct=false
-      else:
-        tot=tot+1
-    cursor.close()
+      cursor=g.conn.execute('select userid from order_list where orderid=%s',parameters)
+      for res in cursor:
+        if res[0]!=userid:
+          error='You cannot inquire an order which does not belong to you!'
+          print error
+          userid_is_correct=false
+        else:
+          tot=tot+1
+      cursor.close()
   
-    print tot
-    if tot==1:
-      if userid_is_correct:
-        cursor=g.conn.execute('select gooid, quantity from order_detail where orderid=%s',parameters)
-        order=[]
-        for res in cursor:
-          goods=[]
-          for a in res:
-            goods.append(a)
-          order.append(goods)
-    else:
-      error='Invalid order ID!'
-      print error
+      print tot
+      if tot==1:
+        if userid_is_correct:
+          cursor=g.conn.execute('select gooid, quantity from order_detail where orderid=%s',parameters)
+          order=[]
+          for res in cursor:
+            goods=[]
+            for a in res:
+              goods.append(a)
+            order.append(goods)
+      else:
+        error='Invalid order ID!'
+        print error
       
   
   content=dict(data=order_list, error=error, order_status=order)
@@ -543,6 +545,58 @@ def product():
       goods.append(items)
     context = dict(goods=goods)
     return render_template('product.html', **context)
+
+
+
+@app.route('/cart', methods=['GET', 'POST'])
+def cart():
+  print 'begin_cart'
+  error=None
+  error2=None
+  data=[]
+  billinginfo=[]
+  uid=session['userid']
+  
+  if request.method=='POST':
+    print 'get a POST'
+    goodid=request.form.get('goodid','')
+    billid=request.form.get('billingid','')
+
+    if goodid!='':
+       print 'goodid=%s' %goodid
+    if billid!='':
+       print 'billid=%s'  %billid
+    print 'ready to work'   
+  
+
+
+  cursor = g.conn.execute('SELECT g.goodid, g.name, g.price, c.quantity from cart_detail c, goods g where g.goodid=c.goodid and c.userid=%s',uid)
+  print '*** first sql search successfully finished ***'
+  for res in cursor:
+    good=[]
+    good.append(res[0])
+    good.append(res[1])
+    good.append(res[3])
+    good.append(str(float(res[2])*int(res[3])))
+    data.append(good)
+  cursor.close()
+  print' cursor closed'
+  cursor = g.conn.execute('SELECT billingid, billingaddress, cardno from billinginfo where userid=%s',uid)
+  print '*** second sql search successfully finished ***'
+  
+  for res in cursor:
+    bill=[]
+    for a in res:
+      bill.append(a)
+    billinginfo.append(bill)
+  cursor.close()
+  print 'finish sql search'
+
+ 
+  print 'maybe finished?'
+  content=dict(data=data,Billinginfo=billinginfo, error=error, error2=error2)
+  return render_template('cart.html',**content)
+
 
 if __name__ == "__main__":
   import click
