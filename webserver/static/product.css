@@ -117,14 +117,14 @@ body {
 }
 
 .head {
-  width: 80px;
+  width: 60px;
   margin: 3px;
   color: white;
   border: none;
 }
 
 #home {
-  width: 80px;
+  /*width: 80px;*/
   margin: 1px;
   background-color: #3385ff;
 } 
@@ -141,7 +141,7 @@ body {
 }
 
 #signout {
-  width: 80px;
+  /*width: 80px;*/
   margin: 1px;
   color: grey;
 }

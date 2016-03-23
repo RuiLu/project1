@@ -115,11 +115,11 @@
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="operation">
-            <form method="POST" action="/addToCart">
+            <form class="form-inline" method="POST" action="/addToCart">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <select id="quantity">
-                    <option value="" disabled="disabled" style="display:none" selected="selected" name="number">choose quantity</option>
+                  <select id="quantity" name="number">
+                    <option value="" disabled="disabled" style="display:none" selected="selected">choose quantity</option>
                     {% for i in range(item[4]) %}
                     <option value="{{i}}">{{i+1}}</option>
                     {% endfor %}
