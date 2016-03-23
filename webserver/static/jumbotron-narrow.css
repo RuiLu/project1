@@ -75,7 +75,7 @@ body {
 }
 
 .head {
-  width: 80px;
+ /* width: 80px;*/
   margin: 3px;
   color: white;
   border: none;
@@ -116,7 +116,7 @@ body {
 }
 
 #signout {
-  width: 80px;
+  /*width: 80px;*/
   margin: 1px;
   color: grey;
 }
