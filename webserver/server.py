@@ -553,16 +553,20 @@ def addToCart():
   print 'add'
   error = None
   if request.method == 'POST':
-    number = request.form.get('number')
-    goodid = request.form.get('name')
+    number = int(request.form.get('number'))
+    goodid = int(request.form.get('name'))
     me = session['userid']
-    print me
+    print me, goodid, number
+    parameters = (me,goodid,number)
     try:
-      parameters(me, goodid, number)
-      g.conn.execute("INSERT INTO cart_detail VALUES (%S,%S,%S)", parameters)
+      g.conn.execute('INSERT INTO cart_detail VALUES (%s,%s,%s)', parameters)
+      print 'insert succeed'
+      return redirect('cart')
     except:
+      print 'insert fails'
+      error = 'fail to add to cart...'
       return render_template('product.html', error = error)
-    return render_template('product.html')
+    return redirect('product')
   return redirect('/product')
 
 

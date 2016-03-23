@@ -69,13 +69,14 @@ body {
 
 .custom {
   height: 150px;
+  width: 100%;
   margin: 5px;
   color: white;
   border: none;
 }
 
 .head {
-  width: 60px;
+  width: 80px;
   margin: 3px;
   color: white;
   border: none;
@@ -116,7 +117,6 @@ body {
 }
 
 #signout {
-  width: 20px;
   margin: 1px;
   color: grey;
 }
