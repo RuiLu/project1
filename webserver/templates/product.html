@@ -98,7 +98,7 @@
         </div>
         <div class="col-xs-7" id="info">
           <div class="row" id="property">
-            <div class="col-xs-12" id="name" name="name">{{ item[1] }}</div> 
+            <div class="col-xs-12" id="name" name="name" values="{{item[1]}}">{{ item[1] }}</div> 
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="price">
@@ -117,8 +117,8 @@
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="operation">
-            <form class="form-inline">
-              <div class="col-xs-12">
+           <!--  <form class="form-inline"> -->
+              <div class="col-xs-6">
                 <div class="form-group">
                   <select id="quantity" name="number">
                     <option value="" disabled="disabled" style="display:none" selected="selected">choose quantity</option>
@@ -127,9 +127,11 @@
                     {% endfor %}
                   </select>
                 </div>
+              </div>
+              <div class="col-xs-6">
                 <button type="submit" class="btn btn-primary">Add to cart</button>
               </div>
-            </form>
+            <!-- </form> -->
           </div>
         </div>
       </div>
