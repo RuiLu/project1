@@ -98,18 +98,23 @@
         </div>
         <div class="col-xs-7" id="info">
           <div class="row" id="property">
-            <div class="col-xs-12" id="name" name="name" values="{{item[1]}}">{{ item[1] }}</div> 
+            <div class="col-xs-12" id="name" value="{{item[1]}}">
+              {{ item[1] }}
+            </div> 
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="price">
-            <div class="col-xs-5">Price: ${{ item[2] }}</div>
-            <div class="col-xs-7">Quantity: {{ item[4] }}</div>
+            <div class="col-xs-4">Price: ${{ item[2] }}</div>
+            <div class="col-xs-4">Quantity: {{ item[4] }}</div>
+            <div class="col-xs-4">
+              Id: <input type="text" name="name" value="{{item[0]}}" size="4" style="background-color:transparent; border:0px" readonly="readonly">
+            </div>
           </div>
           <div class="row" id="date">
-            <div class="col-xs-5">Date: {{ item[5] }}</div>
-             <div class="col-xs-7" id="seller">Seller: {{ item[8] }}</div>
+            <div class="col-xs-4">Date: {{ item[5] }}</div>
+             <div class="col-xs-8" id="seller">Seller: {{ item[8] }}</div>
           </div>
-          <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+          <hr style="width: 100%; color: black; height: 1px; background-color:black; border:0px" />
           <div class="row" id="description">
             <div class="col-xs-12">
               <p>{{ item[3] }}</p>
@@ -129,7 +134,9 @@
                 </div>
               </div>
               <div class="col-xs-6">
-                <button type="submit" class="btn btn-primary">Add to cart</button>
+                <button type="submit" class="btn btn-primary">
+                  Add to cart
+                </button>
               </div>
             <!-- </form> -->
           </div>

@@ -75,7 +75,7 @@ body {
 }
 
 .head {
-  /*width: 60px;*/
+  width: 60px;
   margin: 3px;
   color: white;
   border: none;
@@ -101,7 +101,6 @@ body {
 }
 
 #home {
-  width: 40px;
   background-color: #3385ff;
 } 
 
@@ -117,7 +116,7 @@ body {
 }
 
 #signout {
-  width: 40px;
+  width: 20px;
   margin: 1px;
   color: grey;
 }
