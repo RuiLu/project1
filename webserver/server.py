@@ -548,6 +548,16 @@ def product():
     context = dict(goods=goods)
     return render_template('product.html', **context)
 
+@app.route('/addToCart', methods=['POST', 'GET'])
+def addToCart():
+  print 'add'
+  error = None
+  if request.method == 'POST':
+    number = request.form['number']
+    name = request.form['name']
+    print number, name
+    return redirect('/product')
+  return redirect('/product')
 
 
 @app.route('/cart', methods=['GET', 'POST'])
