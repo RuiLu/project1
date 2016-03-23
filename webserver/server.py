@@ -553,7 +553,8 @@ def addToCart():
   print 'add'
   error = None
   if request.method == 'POST':
-    number = request.form['number']
+    number = request.form.get('number')
+    print number
     name = request.form['name']
     print number, name
     return redirect('/product')
