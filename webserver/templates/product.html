@@ -89,6 +89,7 @@
       <h1>{{ error }}</h1>
       {% endif %}
       {% for item in goods %}
+      <form method="POST" action="/addToCart">
       <div class="row" id="item">
         <div class="col-xs-5">
          <!--  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/USA_10096-7-8_HDR_Antelope_Canyon_Luca_Galuzzi_2007.jpg" class="img-rounded" height="200" id="pic" float="right"> -->
@@ -116,7 +117,7 @@
           </div>
           <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <div class="row" id="operation">
-            <form class="form-inline" method="POST" action="/addToCart">
+            <form class="form-inline">
               <div class="col-xs-12">
                 <div class="form-group">
                   <select id="quantity" name="number">
@@ -133,6 +134,7 @@
         </div>
       </div>
       <p></p>
+      </form>
       {% endfor %}
 
     </div> <!-- /container -->
