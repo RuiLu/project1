@@ -57,5 +57,9 @@ hr {
   border-right-style: none;
 }
 #i3 {
-  line-height: 20px;
+  line-height: 230px;
+}
+
+#label_property {
+  margin-top: 15px;
 }
