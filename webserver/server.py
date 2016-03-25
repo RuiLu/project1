@@ -284,7 +284,7 @@ def setting():
     return render_template('setting.html')
     
   userid = session['userid']
-  cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
+  cursor = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
   info = []
   for result in cur:
     info.append(result['userid'])
@@ -294,11 +294,11 @@ def setting():
     info.append(result['phone'])
     info.append(result['address'])
     info.append(result['rating'])
-  cur.close();
+  cursor.close();
   print info[0],info[1],info[2],info[3],info[4],info[5],info[6]
   print len(info)
   context = dict(data = info)
-  return render_template('setting.html')
+  return render_template('setting.html', **context)
 
 def search_order(userid):
   print 'before search'
