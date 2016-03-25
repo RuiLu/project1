@@ -295,6 +295,7 @@ def setting():
     info.append(result['address'])
     info.append(result['rating'])
   cur.close();
+  print info[0],info[1],info[2],info[3],info[4],info[5],info[6]
   context = dict(information = info)
   return render_template('setting.html')
 
