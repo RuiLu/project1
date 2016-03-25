@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Setting</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='setting.css') }}" rel="stylesheet">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <!-- <ul class="pull-right">  -->
+            <form class="pull-right" action="/signout">
+              <button class="head" id="signout" type="submit">
+                <h5>Sign Out</h5>
+              </button>
+            </form>
+          <!-- </ul> -->
+          
+          <!-- <ul class="pull-right"> -->
+            <form class="pull-right" action="/main">
+              <button class="head" id="home" type="submit">
+                <h5>Home</h5>
+              </button>
+            </form>
+          <!-- </ul> -->
+        </nav>
+        <h3 class="text-muted">FindYa</h3>
+      </div>
+
+      <div class="col-lg-6" style="background-color:#f2f2f2;" id="current">
+        <div class="col-xs-12">
+          <h2 style="text-align:center">Current Information</h2>
+        </div>
+        <br>
+        <div class="col-xs-12">
+          <label>UID</label>
+        </div>
+        <div class="col-xs-12">
+          <label>{{ information[0] }}</label>  
+        </div>
+        <div class="col-xs-12">
+          <label>username</label>
+        </div>
+        <div class="col-xs-12">
+          <label>{{ information[1] }}</label>
+        </div>
+        
+        <div class="col-xs-12">
+          <label>password</label>
+        </div>
+        <div class="col-xs-12">
+          <label>{{ information[2] }}</label>
+        </div>
+        <p></p>
+        <div class="col-xs-12">
+          <label>name</label>
+        </div>
+        <div class="col-xs-12">
+          <label>{{ information[3] }}</label>
+        </div>
+        <p></p>
+        <div class="col-xs-12">
+          <label>phone</label>
+        </div>
+        <div class="col-xs-12">
+          <label>{{ information[4] }}</label>
+        </div>
+        <p></p>
+        <div class="col-xs-12">
+          <label>Address</label>
+        </div>
+        <div class="col-xs-12">
+          <label>{{ information[5] }}</label>  
+        </div>
+        <div class="col-xs-12">
+          <label>Rating</label>
+        </div>
+        <div class="col-xs-12">
+          <label>{{ information[6] }}</label>  
+        </div>
+      </div>
+      <div class="col-lg-6" style="background-color:#e0e0eb" id="modify">
+        <div class="col-xs-12">
+          <h2 style="text-align:center">Modify Here</h2>
+        </div>
+        <br>
+        <div class="col-xs-12">
+          <label>username</label>
+        </div>
+        <div class="col-xs-12">
+          <input type="text" name="username" placeholder="{{rl2784}}" size="40" style="border:0px">
+        </div>
+        <div class="col-xs-12">
+          <label>password</label>
+        </div>
+        <div class="col-xs-12">
+          <input type="password" name="password" placeholder="{{123}}" size="40" style="border:0px">
+        </div>
+        <div class="col-xs-12">
+          <label>input password again</label>
+        </div>
+        <div class="col-xs-12">
+          <input type="password" name="password_check" placeholder="{{123}}" size="40" style="border:0px">
+        </div>
+        <div class="col-xs-12">
+          <label>name</label>
+        </div>
+        <div class="col-xs-12">
+          <input type="text" name="name" placeholder="{{Rui}}" size="40" style="border:0px">
+        </div>
+        <div class="col-xs-12">
+          <label>phone</label>
+        </div>
+        <div class="col-xs-12">
+          <input type="text" name="phone" placeholder="{{9177426974}}" size="40" style="border:0px">
+        </div>
+        <div class="col-xs-12">
+          <label>address</label>
+        </div>
+        <div class="col-xs-12">
+          <input type="text" name="address" placeholder="{{}}" size="40" style="border:0px">
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <form class="pull-right" action="/main">
+          <button id="back" type="submit">
+            <h5>back</h5>
+          </button>
+        </form>
+        <form class="pull-right" action="/setting">
+          <button id="submit" type="submit">
+            <h5>Submit</h5>
+          </button>
+        </form>
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    
+  </body>
+</html>

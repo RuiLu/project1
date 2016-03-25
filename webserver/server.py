@@ -276,6 +276,29 @@ def sell():
       return render_template('sell.html', error = error)
   return render_template('sell.html')
 
+
+@app.route('/setting', methods=['GET', 'POST'])
+def setting(): {
+  error = None
+  if request.method == 'POST':
+
+  else:
+    userid = session['userid']
+    cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
+    information = []
+    for result in cur:
+      information.append(result['userid'])
+      information.append(result['username'])
+      information.append(result['password'])
+      information.append(result['name'])
+      information.append(result['phone'])
+      information.append(result['address'])
+      information.append(result['rating'])
+    cur.close();
+    context = dict(information = information)
+    return render_template('setting.html', **context)
+}
+
 def search_order(userid):
   print 'before search'
   parameters=(userid)
@@ -377,10 +400,12 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
+
+      cursor.close();
+
       if len(uid) == 0:
         error = 'Invaid seller name'
         return render_template('product.html', error=error)
-      print uid[0]
       parameters = (search, mi, ma, uid[0])
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s AND price >= %s AND price <= %s AND userid = %s', parameters)
       goods = []
@@ -395,6 +420,10 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
+
+      cursor.close();
+      cur.close();
+
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -405,6 +434,9 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
+
+      cursor.close();
+
       if len(uid) == 0:
         error = 'Invaid seller name'
         return render_template('product.html', error=error)
@@ -424,6 +456,10 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
+
+      cursor.close();
+      cur.close();
+
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -450,6 +486,10 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
+
+      cursor.close();
+      cur.close();
+
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -476,6 +516,10 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
+
+      cursor.close()
+      cur.close();
+
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -497,6 +541,10 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
+
+      cursor.close()
+      cur.close();
+
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -507,6 +555,9 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
+
+      cursor.close();
+
       if len(uid) == 0:
         error = 'Invaid seller name'
         return render_template('product.html', error=error)
@@ -523,6 +574,10 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
+
+      cursor.close()
+      cur.close();
+
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -539,12 +594,16 @@ def product():
       items = []
       for i in range(0, 8):
         items.append(res[i])
-      cursor = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
+      cur = g.conn.execute('SELECT user_account.name FROM user_account, goods WHERE user_account.userid = %s', res[7])
       name = []
-      for result in cursor:
+      for result in cur:
         name.append(result['name'])
         items.append(result['name'])
       goods.append(items)
+
+    cursor.close()
+    cur.close();
+
     context = dict(goods=goods)
     return render_template('product.html', **context)
 
@@ -680,7 +739,6 @@ def cart():
   print 'maybe finished?'
   content=dict(data=data,Billinginfo=billinginfo, error=error, error2=error2, total='%.2f' %total)
   return render_template('cart.html',**content)
-
 
 if __name__ == "__main__":
   import click

@@ -1,0 +1,29 @@
+#current {
+  height: 450px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+}
+
+#modify {
+  height: 450px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+}
+
+#submit {
+  width: 80px;
+  margin: 10px;
+  border: none;
+  color: white;
+  background-color: #3385ff;
+}
+
+#back {
+  width: 80px;
+  margin: 10px;
+  border: none;
+  color: white;
+  background-color: grey;
+}
