@@ -103,7 +103,14 @@
       
 
       <div class="col-lg-6" style="background-color:#e0e0eb" id="modify">
-      
+        <div class="col-xs-12">
+          <h2 style="text-align:center">Modify Here</h2>
+        </div>
+
+        {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
+        <label >Name</label>
+        <input type="text" class="form-control" name="name">
+
       </div>
 
       <footer class="footer">
