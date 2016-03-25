@@ -292,7 +292,8 @@ def setting():
     try:
       sql = 'UPDATE user_account SET username = %s, password = %s, name = %s, phone = %s, address = %s WHERE userid = %s'
       g.conn.execute(sql, parameters)
-      return redirect('/main')
+      error = "Updata succeeded"
+      return render_template('setting.html', error = error)
     except:
       error = "Updata failed"
       return render_template('setting.html', error = error)
