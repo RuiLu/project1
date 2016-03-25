@@ -292,24 +292,10 @@ def setting():
     try:
       sql = 'UPDATE user_account SET username = %s, password = %s, name = %s, phone = %s, address = %s WHERE userid = %s'
       g.conn.execute(sql, parameters)
-      print 'yeah!'
+      print 'yeah!s'
       return redirect('/setting')
     except:
-      error = "Updata failed"
-      userid = session['userid']
-      cursor = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
-      info = []
-      for result in cursor:
-        info.append(result['userid'])
-        info.append(result['username'])
-        info.append(result['password'])
-        info.append(result['name'])
-        info.append(result['phone'])
-        info.append(result['address'])
-        info.append(result['rating'])
-      cursor.close();
-      context = dict(data = info)
-      return render_template('setting.html', **context, error = error)
+      return redirect('/setting')
     
   userid = session['userid']
   cursor = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
