@@ -12,13 +12,11 @@
     <title>FindYa</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="billing.css" rel="stylesheet">
-    <link href="jumbotron-narrow.css" rel="stylesheet">
-
-
+    <link href="{{ url_for('static', filename='billing.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet">    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
