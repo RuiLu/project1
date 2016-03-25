@@ -281,6 +281,8 @@ def sell():
 def setting():
   error = None
   if request.method == 'POST':
+    username = request.form.get('username')
+    print username
     return render_template('setting.html')
     
   userid = session['userid']
