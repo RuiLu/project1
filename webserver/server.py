@@ -292,11 +292,24 @@ def setting():
     try:
       sql = 'UPDATE user_account SET username = %s, password = %s, name = %s, phone = %s, address = %s WHERE userid = %s'
       g.conn.execute(sql, parameters)
-      error = "Updata succeeded"
-      return render_template('setting.html', error = error)
+      print '成功，返回'
+      return redirect('/setting')
     except:
       error = "Updata failed"
-      return render_template('setting.html', error = error)
+      userid = session['userid']
+      cursor = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
+      info = []
+      for result in cursor:
+        info.append(result['userid'])
+        info.append(result['username'])
+        info.append(result['password'])
+        info.append(result['name'])
+        info.append(result['phone'])
+        info.append(result['address'])
+        info.append(result['rating'])
+      cursor.close();
+      context = dict(data = info)
+      return render_template('setting.html', **context, error = error)
     
   userid = session['userid']
   cursor = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
@@ -310,8 +323,6 @@ def setting():
     info.append(result['address'])
     info.append(result['rating'])
   cursor.close();
-  print info[0],info[1],info[2],info[3],info[4],info[5],info[6]
-  print len(info)
   context = dict(data = info)
   return render_template('setting.html', **context)
 
