@@ -1,12 +1,12 @@
 #current {
-  height: 450px;
+  height: 500px;
   border-style: solid;
   border-color: #000000;
   border-width: 1px;
 }
 
 #modify {
-  height: 450px;
+  height: 500px;
   border-style: solid;
   border-color: #000000;
   border-width: 1px;
@@ -18,4 +18,5 @@
   border: none;
   color: white;
   background-color: #3385ff;
+  margin: 20px;
 }
