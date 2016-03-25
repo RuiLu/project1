@@ -18,6 +18,12 @@
   border-right-style: none;
 }
 
+#fence4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #surrounding{
   margin-bottom: 10px;
 }

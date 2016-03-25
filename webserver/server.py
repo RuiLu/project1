@@ -348,8 +348,13 @@ def billing():
 def delete():
   billingid = request.form.get('billingid')
   print billingid
-
-  return redirect('/billing')
+  sql = 'DELETE FROM billinginfo WHERE billingid = %s'
+  try:
+    g.conn.execute(sql, billingid)
+    return redirect('/billing')
+  except:
+    error = 'Delete failed.'
+  return render_template('billing.html', error = error)
 
 def search_order(userid):
   print 'before search'
