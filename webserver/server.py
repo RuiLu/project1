@@ -316,7 +316,20 @@ def setting():
 def billing():
   error = None
   if request.method == 'POST':
-    return redirect('/main')
+    userid = session['userid']
+    cardno = request.form.get('cardno')
+    holder = request.form.get('holder')
+    b_addr = request.form.get('billingaddress')
+
+    print userid, cardno, holder, b_addr
+    parameters = (userid, cardno, holder, b_addr)
+    sql = 'INSERT INTO billinginfo(userid, cardno, holder, billingaddress) VALUES (%s,%s,%s,%s)'
+    try:
+      g.conn.execute(sql, parameters)
+      return redirect('/billing')
+    except:
+      error = "Add billing information failed."
+      return render_template('billing.html', error = error)
 
   sql = 'SELECT * FROM billinginfo WHERE userid = %s'
   cursor = g.conn.execute(sql, session['userid'])

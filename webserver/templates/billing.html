@@ -79,19 +79,26 @@
       </div>  
       {% endfor %}
       <hr>
+      {% if error: %} 
+      <div class="col-md-12">
+        <p class="error" id="warning"><strong>Error:</strong> {{ error }}   
+      </div>
+      {% endif %}
       <div class="row">
         <div class="col-md-12" id="surrounding">
-          <div class="col-xs-10" id="i2">
-            <label id="label_property">Card Number</label>
-            <input type="text" class="form-control" name="cardno" required autofocus>
-            <label id="label_property">Card Holder</label>
-            <input type="text" class="form-control" name="holder" required autofocus>
-            <label id="label_property">Billing Address</label>
-            <input type="text" class="form-control" name="billingaddress" required autofocus>
-          </div>
-          <div class="col-xs-2" id="i3">
-            <button type="submit" id="add">add</button>
-          </div>
+          <form method="POST" action="/billing">
+            <div class="col-xs-10" id="i2">
+              <label id="label_property">Card Number</label>
+              <input type="text" class="form-control" name="cardno" required autofocus>
+              <label id="label_property">Card Holder</label>
+              <input type="text" class="form-control" name="holder" required autofocus>
+              <label id="label_property">Billing Address</label>
+              <input type="text" class="form-control" name="billingaddress" required autofocus>
+            </div>
+            <div class="col-xs-2" id="i3">
+              <button type="submit" id="add">add</button>
+            </div>
+          </form>
         </div>
       </div>
     </div> <!-- /container -->
