@@ -65,12 +65,12 @@ engine = create_engine(DATABASEURI)
 # 
 # The setup code should be deleted once you switch to using the Part 2 postgresql database
 #
-engine.execute("""DROP TABLE IF EXISTS test;""")
-engine.execute("""CREATE TABLE IF NOT EXISTS test (
-  id serial,
-  name text
-);""")
-engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
+# engine.execute("""DROP TABLE IF EXISTS test;""")
+# engine.execute("""CREATE TABLE IF NOT EXISTS test (
+#   id serial,
+#   name text
+# );""")
+# engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
 #
 # END SQLITE SETUP CODE
 #
@@ -311,6 +311,25 @@ def setting():
   cursor.close();
   context = dict(data = info)
   return render_template('setting.html', **context)
+
+@app.route('/billing', methods=['POST', 'GET'])
+def billing():
+  error = None
+  if request.method == 'POST':
+    return redirect('/main')
+
+  sql = 'SELECT * FROM billinginfo WHERE userid = %s'
+  cursor = g.conn.execute(sql, session['userid'])
+  results = []
+  for a in cursor:
+    res = []
+    for b in a:
+      res.append(b)
+    results.append(res)
+
+  cursor.close();
+  context = dict(billings = results)
+  return render_template('billing.html', **context)
 
 def search_order(userid):
   print 'before search'

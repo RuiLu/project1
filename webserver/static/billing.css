@@ -1,0 +1,61 @@
+#billing {
+  border: 1px;
+  border-color: #000000;
+  border-style: solid;
+  margin: 5px
+}
+
+#fence1, #fence2,#fence3, #fence4, #fence5 {
+  height: 60px;
+  background-color: #f0f0f5;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 60px;
+}
+
+#fence1, #fence2,#fence3, #fence4 {
+  border-right-style: none;
+}
+
+#surrounding{
+  margin-bottom: 10px;
+}
+
+#delete{
+  height: 30px;
+  width: 80%;
+  line-height: 30px;
+  border: none;
+  color: white;
+  background-color: #3385ff;
+}
+
+#add {
+  height: 30px;
+  width: 80%;
+  line-height: 10px;
+  border: none;
+  color: white;
+  background-color: #3385ff;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000000;
+  size: 2px;
+}
+
+#i2, #i3{
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
+  height: 250px;
+}
+#i2 {
+  border-right-style: none;
+}
+#i3 {
+  line-height: 250px;
+}
