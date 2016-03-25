@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Signin for FindYa</title>
+    <title>FindYa</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
@@ -29,7 +29,7 @@
       <form class="form-signin" method="POST" action="/">
         <h2 class="form-signin-heading">Sign In</h2>
         <label class="sr-only">Username</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Username" name="username" required autofocus>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
         <label class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
         {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }} {% endif %}

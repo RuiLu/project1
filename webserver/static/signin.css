@@ -84,3 +84,7 @@ body {
   font-size: 20px;
 }
 
+#inputUsername, #inputPassword {
+  margin-bottom: 10px;
+}
+
