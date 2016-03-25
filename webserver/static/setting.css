@@ -12,18 +12,10 @@
   border-width: 1px;
 }
 
-#submit {
-  width: 80px;
-  margin: 10px;
-  border: none;
-  color: white;
-  background-color: #3385ff;
-}
-
 #back {
   width: 80px;
   margin: 10px;
   border: none;
   color: white;
-  background-color: grey;
+  background-color: #3385ff;
 }
