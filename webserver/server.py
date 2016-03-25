@@ -285,18 +285,18 @@ def setting():
     
   userid = session['userid']
   cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
-  information = []
+  info = []
   for result in cur:
-    information.append(result['userid'])
-    information.append(result['username'])
-    information.append(result['password'])
-    information.append(result['name'])
-    information.append(result['phone'])
-    information.append(result['address'])
-    information.append(result['rating'])
+    info.append(result['userid'])
+    info.append(result['username'])
+    info.append(result['password'])
+    info.append(result['name'])
+    info.append(result['phone'])
+    info.append(result['address'])
+    info.append(result['rating'])
   cur.close();
-  context = dict(information = information)
-  return render_template('setting.html', **context)
+  context = dict(information = info)
+  return render_template('setting.html')
 
 def search_order(userid):
   print 'before search'
