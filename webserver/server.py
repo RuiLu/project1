@@ -332,11 +332,11 @@ def billing():
   return render_template('billing.html', **context)
 
 @app.route('/delete', methods=['POST'])
-def deletes():
+def delete():
   billingid = request.form.get('billingid')
   print billingid
 
-  return render_template('billing.html')
+  return redirect('/billing')
 
 def search_order(userid):
   print 'before search'
