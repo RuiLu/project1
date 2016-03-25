@@ -286,7 +286,7 @@ def setting():
   userid = session['userid']
   cursor = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
   info = []
-  for result in cur:
+  for result in cursor:
     info.append(result['userid'])
     info.append(result['username'])
     info.append(result['password'])
