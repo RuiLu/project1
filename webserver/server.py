@@ -278,10 +278,10 @@ def sell():
 
 
 @app.route('/setting', methods=['GET', 'POST'])
-def setting(): {
+def setting():
   error = None
   if request.method == 'POST':
-
+    return render_template('setting.html')
   else:
     userid = session['userid']
     cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
@@ -297,7 +297,6 @@ def setting(): {
     cur.close();
     context = dict(information = information)
     return render_template('setting.html', **context)
-}
 
 def search_order(userid):
   print 'before search'
