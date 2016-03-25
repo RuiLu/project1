@@ -18,5 +18,11 @@
   border: none;
   color: white;
   background-color: #3385ff;
-  margin: 20px;
+  margin-top: 20px;
+
+}
+
+#label_property {
+  margin-top: 10px;
+  font-size: 20px;
 }
