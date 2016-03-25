@@ -108,9 +108,18 @@
         </div>
 
         {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
+        <label >Username</label>
+        <input type="text" class="form-control" name="username" placeholder"{{data[1]}}">
+        <label >Password</label>
+        <input type="text" class="form-control" name="password" placeholder"{{data[2]}}">
+        <label >Check Password</label>
+        <input type="text" class="form-control" name="check_password" placeholder"{{data[2]}}">
         <label >Name</label>
-        <input type="text" class="form-control" name="name">
-
+        <input type="text" class="form-control" name="name" placeholder"{{data[3]}}">
+        <label >Phone</label>
+        <input type="text" class="form-control" name="phone" placeholder"{{data[4]}}">
+        <label >Address</label>
+        <input type="text" class="form-control" name="address" placeholder"{{data[5]}}">
       </div>
 
       <footer class="footer">
