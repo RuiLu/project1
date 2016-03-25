@@ -332,7 +332,7 @@ def billing():
   return render_template('billing.html', **context)
 
 @app.route('/delete', methods=['POST'])
-def billing():
+def deletes():
   billingid = request.form.get('billingid')
   print billingid
 
