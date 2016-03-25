@@ -387,7 +387,7 @@ def product():
     seller = request.form['seller']
 
     if search != '' and minAmount != '' and maxAmount != '' and seller != '':
-      print search, minAmount, maxAmount, seller
+      
       search = '%' + search + '%'
       mi = float(minAmount)
       ma = float(maxAmount)
@@ -400,8 +400,6 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
-
-      cursor.close();
 
       if len(uid) == 0:
         error = 'Invaid seller name'
@@ -421,9 +419,6 @@ def product():
           items.append(result['name'])
         goods.append(items)
 
-      cursor.close();
-      cur.close();
-
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -434,8 +429,6 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
-
-      cursor.close();
 
       if len(uid) == 0:
         error = 'Invaid seller name'
@@ -456,9 +449,6 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
-
-      cursor.close();
-      cur.close();
 
       if len(goods) == 0:
         error = 'nothing...'
@@ -487,9 +477,6 @@ def product():
           items.append(result['name'])
         goods.append(items)
 
-      cursor.close();
-      cur.close();
-
       if len(goods) == 0:
         error = 'nothing...'
         return render_template('product.html', error=error)
@@ -504,6 +491,7 @@ def product():
         return render_template('product.html', error=error)
       parameters = (search, mi, ma)
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s and price >= %s AND price <= %s', parameters)
+
       goods = []
       for res in cursor:
         items = []
@@ -516,9 +504,6 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
-
-      cursor.close()
-      cur.close();
 
       if len(goods) == 0:
         error = 'nothing...'
@@ -528,7 +513,7 @@ def product():
     elif search != '' and minAmount == '' and maxAmount == '' and seller == '':
       search = '%' + search + '%'
       cursor = g.conn.execute('SELECT * FROM goods WHERE name LIKE %s', search)
-      print search
+   
       goods = []
       for res in cursor:
         items = []
@@ -541,9 +526,6 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
-
-      cursor.close()
-      cur.close();
 
       if len(goods) == 0:
         error = 'nothing...'
@@ -555,8 +537,6 @@ def product():
       uid = []
       for result in cursor:
         uid.append(result['userid'])
-
-      cursor.close();
 
       if len(uid) == 0:
         error = 'Invaid seller name'
@@ -574,9 +554,6 @@ def product():
           name.append(result['name'])
           items.append(result['name'])
         goods.append(items)
-
-      cursor.close()
-      cur.close();
 
       if len(goods) == 0:
         error = 'nothing...'
