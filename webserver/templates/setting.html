@@ -110,7 +110,7 @@
         {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
         <form method="POST" action="/setting">
           <label>Username</label>
-          <input type="text" class="form-control" name="username" values="{{data[1]}}" placeholder="{{data[1]}}">
+          <input type="text" class="form-control" name="username" value="{{data[1]}}" placeholder="{{data[1]}}">
           <label>Password</label>
           <input type="text" class="form-control" name="password" placeholder="{{data[2]}}">
           <label>Check Password</label>
