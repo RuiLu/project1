@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='setting.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet">
@@ -49,22 +50,7 @@
         <h3 class="text-muted">FindYa</h3>
       </div>
 
-      <form class="form-signin" method="POST" action="/sell">
-        <h2 class="form-signin-heading">Please fill in information of goods</h2>
-        {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
-        <label class="sr-only">Name</label><span id="hint">Name *</span>
-        <input type="text" class="form-control" name="name" required autofocus>
-        <label class="sr-only">Price</label><span id="hint">Price *</span>
-        <input type="text" class="form-control" name="price" required>
-        <label class="sr-only">Description</label><span id="hint">Decription</span>
-        <input type="text" class="form-control" name="description">
-        <label class="sr-only">Quantity</label><span id="hint">Quantity *</span>
-        <input type="number" class="form-control" name="quantity" required autofocus>
-        <label class="sr-only">Picture Source</label><span id="hint">Picture</span>
-        <input type="text" class="form-control" name="picture">
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sell Now!</button>
-      </form>
+      
       
       
 
