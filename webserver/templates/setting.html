@@ -104,8 +104,8 @@
           <h2 style="text-align:center">Modify Here</h2>
         </div>
 
-        {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
         <form method="POST" action="/setting">
+          {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
           <label id="label_property">Username</label>
           <input type="text" class="form-control" name="username" value="{{data[1]}}" placeholder="{{data[1]}}">
           <label id="label_property">Password</label>
