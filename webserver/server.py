@@ -282,21 +282,21 @@ def setting():
   error = None
   if request.method == 'POST':
     return render_template('setting.html')
-  else:
-    userid = session['userid']
-    cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
-    information = []
-    for result in cur:
-      information.append(result['userid'])
-      information.append(result['username'])
-      information.append(result['password'])
-      information.append(result['name'])
-      information.append(result['phone'])
-      information.append(result['address'])
-      information.append(result['rating'])
-    cur.close();
-    context = dict(information = information)
-    return render_template('setting.html', **context)
+    
+  userid = session['userid']
+  cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
+  information = []
+  for result in cur:
+    information.append(result['userid'])
+    information.append(result['username'])
+    information.append(result['password'])
+    information.append(result['name'])
+    information.append(result['phone'])
+    information.append(result['address'])
+    information.append(result['rating'])
+  cur.close();
+  context = dict(information = information)
+  return render_template('setting.html', **context)
 
 def search_order(userid):
   print 'before search'
