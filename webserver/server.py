@@ -282,7 +282,20 @@ def setting():
   error = None
   if request.method == 'POST':
     username = request.form.get('username')
-    print username
+    password = request.form.get('password')
+    name = request.form.get('name')
+    phone = request.form.get('phone')
+    address = request.form.get('address')
+    
+    parameters = (username, password, name, phone, address, session['userid'])
+    
+    try:
+      sql = 'UPDATE user_account SET username = %s, password = %s, name = %s, phone = %s, address = %s WHERE userid = %s'
+      g.conn.execute(sql, parameters)
+    except:
+      error = "Updata failed"
+      return render_template('setting.html', error = error)
+
     return render_template('setting.html')
     
   userid = session['userid']
