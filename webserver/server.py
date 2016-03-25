@@ -331,6 +331,13 @@ def billing():
   context = dict(billings = results)
   return render_template('billing.html', **context)
 
+@app.route('/delete', methods=['POST'])
+def billing():
+  billingid = request.form.get('billingid')
+  print billingid
+
+  return render_template('billing.html')
+
 def search_order(userid):
   print 'before search'
   parameters=(userid)
