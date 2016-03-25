@@ -297,7 +297,7 @@ def setting():
   cur.close();
   print info[0],info[1],info[2],info[3],info[4],info[5],info[6]
   context = dict(data = info)
-  return render_template('setting.html', data)
+  return render_template('setting.html')
 
 def search_order(userid):
   print 'before search'
