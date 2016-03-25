@@ -292,7 +292,7 @@ def setting():
     try:
       sql = 'UPDATE user_account SET username = %s, password = %s, name = %s, phone = %s, address = %s WHERE userid = %s'
       g.conn.execute(sql, parameters)
-      print '成功，返回'
+      print 'yeah!'
       return redirect('/setting')
     except:
       error = "Updata failed"
