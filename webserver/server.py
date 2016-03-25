@@ -283,20 +283,20 @@ def setting():
   if request.method == 'POST':
     return render_template('setting.html')
     
-  userid = session['userid']
-  cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
-  info = []
-  for result in cur:
-    info.append(result['userid'])
-    info.append(result['username'])
-    info.append(result['password'])
-    info.append(result['name'])
-    info.append(result['phone'])
-    info.append(result['address'])
-    info.append(result['rating'])
-  cur.close();
-  print info[0],info[1],info[2],info[3],info[4],info[5],info[6]
-  context = dict(information = info)
+  # userid = session['userid']
+  # cur = g.conn.execute("SELECT * FROM user_account WHERE userid = %s", userid)
+  # info = []
+  # for result in cur:
+  #   info.append(result['userid'])
+  #   info.append(result['username'])
+  #   info.append(result['password'])
+  #   info.append(result['name'])
+  #   info.append(result['phone'])
+  #   info.append(result['address'])
+  #   info.append(result['rating'])
+  # cur.close();
+  # print info[0],info[1],info[2],info[3],info[4],info[5],info[6]
+  # context = dict(information = info)
   return render_template('setting.html')
 
 def search_order(userid):
