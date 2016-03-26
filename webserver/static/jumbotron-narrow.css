@@ -149,3 +149,7 @@ body {
 #sell {
   margin-top: 20px;
 }
+
+#welcome {
+  font-family: "Georgia", Times, serif;
+}
