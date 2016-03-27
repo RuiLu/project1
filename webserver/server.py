@@ -663,7 +663,7 @@ def addToCart():
   return redirect('/product')
 
 @app.route('/delete_from_cart', methods=['POST'])
-def delete_from_cart:
+def delete_from_cart():
   error = None
   userid = session['userid']
   goodid = request.form.get('goodid')
