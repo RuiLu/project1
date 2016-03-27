@@ -5,7 +5,26 @@
   margin: 5px
 }
 
-#fence1, #fence2,#fence3, #fence4, #fence5 {
+#f1, #f2,#f3, #f4, #f5 {
+  height: 60px;
+  background-color: #BFDCFA;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 60px;
+}
+
+#f1, #f2,#f3, #f4 {
+  border-right-style: none;
+}
+
+#f4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#g1, #g2, #g3, #g4, #g5 {
   height: 60px;
   background-color: #f0f0f5;
   border-color: #000000;
@@ -14,18 +33,14 @@
   line-height: 60px;
 }
 
-#fence1, #fence2,#fence3, #fence4 {
+#g1, #g2,#g3, #g4 {
   border-right-style: none;
 }
 
-#fence4 {
+#g4 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-#surrounding{
-  background-color: #BFDCFA;
 }
 
 #delete{
