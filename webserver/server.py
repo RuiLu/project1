@@ -731,7 +731,7 @@ def cart():
   if request.method=='POST':
 
     for item in data:
-      gid = item[0]
+      gid = int(item[0])
       number = int(item[2])
       # print item[0], item[1], item[2]
       sql = 'SELECT quantity FROM goods WHERE goodid = %s'
@@ -742,10 +742,11 @@ def cart():
       print 'quantity_here: ',quantity_here
       print 'number_here: ', number
       diff = quantity_here - number
+      parameters = (diff, gid)
       print 'diff_here: ',diff
-      sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
+      sql = 'UPDATE goods SET quantity = %s WHERE goodid = %s'
       try:
-        g.conn.execute(sql, diff)
+        g.conn.execute(sql, parameters)
         print 'Succeeded!'
       except:
         error = 'Fail to deduct from goods table.'
