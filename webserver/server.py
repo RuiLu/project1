@@ -728,6 +728,7 @@ def cart():
       for infos in cursor:
         quantity_here = infos[0]
         print 'quantity_here: ',quantity_here
+        print 'number_here', number
         diff = int(quantity) - int(number)
         print 'diff_here: ',diff
         sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
@@ -736,6 +737,7 @@ def cart():
         except:
           error = 'Fail to deduct from goods table.'
           print error
+    cursor.close();
 
     print 'get a POST'
     goodid = request.form.get('goodid','')
