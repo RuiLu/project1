@@ -267,10 +267,12 @@ def sell():
     i = datetime.datetime.now()
     date = i.isoformat()
     userid = session['userid']
+    sql = 'INSERT INTO goods(name, price, description, quantity, date, picture, userid) VALUES (%s,%s,%s,%s,%s,%s,%s)'
     parameters = (name, price, description, quantity, date, picture, userid)
     try:
-      g.conn.execute('INSERT INTO goods(name,price,description,quantity,date,picture,userid) VALUES (%s,%s,%s,%s,%s,%s,%s)', parameters)
-      print 'why fail?'
+      print 'why fail?1'
+      g.conn.execute(sql, parameters)
+      print 'why fail?2'
       return redirect('/main')
     except Exception as e:
       error = 'Invalid input, try again.'
