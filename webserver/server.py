@@ -682,7 +682,6 @@ def delete_from_cart():
 
 @app.route('/cart', methods=['GET', 'POST'])
 def cart():
-  print 'begin_cart'
   error=None
   error2=None
   data=[]
@@ -694,20 +693,19 @@ def cart():
   bills=set()
 
 
-  cursor = g.conn.execute('SELECT g.goodid, g.name, g.price, c.quantity from cart_detail c, goods g where g.goodid=c.goodid and c.userid=%s',uid)
+  cursor = g.conn.execute('SELECT g.goodid, g.name, g.price, c.quantity FROM cart_detail c, goods g WHERE g.goodid=c.goodid AND c.userid=%s',uid)
   for res in cursor:
-    tot=tot+1
-    good=[]
+    tot = tot+1
+    good = []
     goods.add(res[0])
     good.append(res[0])
     good.append(res[1])
     good.append(res[3])
-    price=float(res[2])*int(res[3])
+    price = float(res[2]) * int(res[3])
     good.append(str(price))
-    total=total+price
+    total = total + price
     data.append(good)
   cursor.close()
-  print 'cursor closed'
   cursor = g.conn.execute('SELECT billingid, cardno, holder, billingaddress from billinginfo where userid=%s',uid)
   
   for res in cursor:
@@ -717,7 +715,6 @@ def cart():
       bill.append(a)
     billinginfo.append(bill)
   cursor.close()
-  print 'finish sql search'
 
   if request.method=='POST':
 
@@ -731,21 +728,23 @@ def cart():
       for infos in cursor:
         quantity_here = infos[0]
         print 'quantity_here: ',quantity_here
+        diff = quantity - number
+        sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
+        try:
+          g.conn.execute(sql, diff)
+        except:
+          error = 'Fail to deduct from goods table.'
+          print error
 
     print 'get a POST'
-    goodid=request.form.get('goodid','')
-    billid=request.form.get('billingid','')
+    goodid = request.form.get('goodid','')
+    billid = request.form.get('billingid','')
 
-    if goodid!='':
-      print goods
-      print 'goodid=%s' %goodid
+    if goodid != '':
       if int(goodid) in goods:
         try:
           parameters=(uid,goodid)
-          print 'Try to delete'
-          print 'DELETE FROM cart_detail WHERE userid=%s AND goodid=%s' %parameters
           cursor=g.conn.execute('DELETE FROM cart_detail WHERE userid=%s AND goodid=%s',parameters)
-          print 'sql delete finish'
           cursor.close()
           return redirect('/cart')
         except:
