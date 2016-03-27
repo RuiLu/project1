@@ -269,7 +269,7 @@ def sell():
     print quantity
     picture = request.form['picture']
     print picture
-    i = datetime.datetime.now()
+    i = datetime.now()
     current = i.isoformat()
     print date
     userid = session['userid']
