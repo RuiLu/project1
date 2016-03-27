@@ -260,12 +260,17 @@ def sell():
   error = None
   if request.method == 'POST':
     name = request.form['name']
+    print name
     price = float(request.form['price'])
+    print price
     description = request.form['description']
+    print description
     quantity = int(request.form['quantity'])
+    print quantity
     picture = request.form['picture']
     i = datetime.datetime.now()
     date = i.isoformat()
+    print date
     userid = session['userid']
     sql = 'INSERT INTO goods(name, price, description, quantity, date, picture, userid) VALUES (%s,%s,%s,%s,%s,%s,%s)'
     parameters = (name, price, description, quantity, date, picture, userid)
