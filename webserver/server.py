@@ -269,6 +269,7 @@ def sell():
     userid = session['userid']
     sql = 'INSERT INTO goods(name, price, description, quantity, date, picture, userid) VALUES (%s,%s,%s,%s,%s,%s,%s)'
     parameters = (name, price, description, quantity, date, picture, userid)
+    print sql
     try:
       print 'why fail?1'
       g.conn.execute(sql, parameters)
