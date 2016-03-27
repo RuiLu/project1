@@ -65,12 +65,12 @@
         <form method="POST" action="/delete_from_cart">
           <div class="row" id="cart_content">
             <div class="col-md-2" id="c1">
-              <input type="text" name="goodid" value="{{n[1]}}" size="6" style="background-color:transparent; border:0px" readonly="readonly">
+              <input type="text" name="goodid" value="{{n[0]}}" size="6" style="background-color:transparent; border:0px" readonly="readonly">
             </div>
             <!-- <div class="col-md-1" id="c1">{{n[1]}}</div> -->
-            <div class="col-md-3" id="c2">{{n[2]}}</div>
-            <div class="col-md-2" id="c3">{{n[3]}}</div>
-            <div class="col-md-3" id="c4">{{n[4]}}</div>
+            <div class="col-md-3" id="c2">{{n[1]}}</div>
+            <div class="col-md-2" id="c3">{{n[2]}}</div>
+            <div class="col-md-3" id="c4">{{n[3]}}</div>
             <div class="col-md-2" id="c5">
               <button type="submit" id="delete_from_cart">delete</button>
             </div>
@@ -101,8 +101,8 @@
 	      <div class="row" id="column">
   	      <div class="col-md-1" id="d1">No</div>
           <div class="col-md-3" id="d2">Credit and debit</div>
-          <div class="col-md-3" id="c3">Name on card</div>
-  	      <div class="col-md-5" id="c4">Billling Address</div>
+          <div class="col-md-3" id="d3">Name on card</div>
+  	      <div class="col-md-5" id="d4">Billling Address</div>
   	    </div>
 	   
   		  {% for bill in Billinginfo %}
