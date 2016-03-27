@@ -269,13 +269,13 @@ def sell():
     print quantity
     picture = request.form['picture']
     print picture
-    # i = datetime.now()
-    # current = i.isoformat()
-    current = date.today()
-    print date
+    i = datetime.now()
+    current = i.isoformat()
+    # current = date.today()
+    print current
     userid = session['userid']
     sql = 'INSERT INTO goods(name, price, description, quantity, current, picture, userid) VALUES (%s,%s,%s,%s,%s,%s,%s)'
-    parameters = (name, price, description, quantity, date, picture, userid)
+    parameters = (name, price, description, quantity, current, picture, userid)
     print sql
     try:
       print 'why fail?1'
