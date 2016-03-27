@@ -393,41 +393,41 @@ def order_status():
   order_list=search_order(userid)
    
   print request.method
-  if request.method=='POST':
+  if request.method == 'POST':
     orderid=request.form.get('id','')
-    if orderid!='':
+    if orderid != '':
       print orderid
       print userid
-      userid_is_correct=true
-      tot=0
+      userid_is_correct = true
+      tot = 0
       parameters=(orderid)
-
-
-
-
-      cursor=g.conn.execute('select userid from order_list where orderid=%s',parameters)
+      sql = 'SELECT userid FROM order_list WHERE orderid = %s'
+      # cursor=g.conn.execute('select userid from order_list where orderid = %s',parameters)
+      cursor = g.conn.execute(sql, parameters)
       for res in cursor:
-        if res[0]!=userid:
-          error='You cannot inquire an order which does not belong to you!'
+        if res[0] != userid:
+          error = 'You cannot inquire an order which does not belong to you!'
           print error
-          userid_is_correct=false
+          userid_is_correct = false
         else:
-          tot=tot+1
+          tot = tot + 1
       cursor.close()
-      print 'seem there exists this order'
   
       print tot
-      if tot==1:
+      if tot == 1:
         if userid_is_correct:
-          cursor=g.conn.execute('select goodid, quantity from order_detail where orderid=%s',parameters)
-          order=[]
+          sql = 'SELECT o.goodid, g.name, o.quantity, g.price FROM order_detail o, goods g WHERE o.goodid = g.goodid AND orderid = %s'
+          cursor = g.conn.execute(sql, parameters)
+          # cursor = g.conn.execute('select goodid, quantity from order_detail where orderid=%s',parameters)
+          order = []
           for res in cursor:
-            goods=[]
+            goods = []
             for a in res:
+              print a
               goods.append(a)
             order.append(goods)
       else:
-        error='Invalid order ID!'
+        error = 'Invalid order ID!'
         print error
       
   

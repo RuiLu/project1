@@ -53,6 +53,11 @@ hr {
   text-align: center;
 }
 
+#items {
+  background-color: #BFDCFA;
+  text-align: center;
+}
+
 #select_billing {
   height: 200px;
   border: none;
@@ -89,4 +94,23 @@ hr {
 }
 #input_billno {
   margin-bottom: 20px;
+}
+#input_orderno {
+  margin-bottom: 20px;
+}
+
+#h1,#h2,#h3,#h4 {
+  height: 60px;
+  white-space: nowrap;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#h1,#h2,#h3 {
+  border-right-style: none;
 }

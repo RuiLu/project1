@@ -11,13 +11,13 @@
     <title>FindYa</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{url_for('static', filename='jumbotron-narrow.css')}}" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{url_for('static', filename='grid.css')}}" rel="stylesheet">   
+    <link href="grid.css" rel="stylesheet">   
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -33,70 +33,74 @@
       <div class="header clearfix">
         <nav>
           <!-- <ul class="pull-right">  -->
-            <form class="pull-right" action="/signout">
-              <button class="head" id="signout" type="submit">
-                <h5>Sign Out</h5>
-              </button>
-            </form>
+          <form class="pull-right" action="/signout">
+            <button class="head" id="signout" type="submit">
+              <h5>Sign Out</h5>
+            </button>
+          </form>
           <!-- </ul> -->
           
           <!-- <ul class="pull-right"> -->
-	    <form class="pull-right" action="/main">
-	      <button class="head" id="home" type="submit">
-                <h5>Home</h5>
-              </button>
-            </form>
+	        <form class="pull-right" action="/main">
+	          <button class="head" id="home" type="submit">
+              <h5>Home</h5>
+            </button>
+          </form>
           <!-- </ul> -->
         </nav>
         <h3 class="text-muted">FindYa</h3>
       </div>
 
-	<h1>Current Order List</h1>
-	<!--  <div>{{data}}</div> -->
-  	    <div>
-            <div class="row">
-            <div class="col-md-3">Orderid</div>
-            <div class="col-md-3">date</div>
-            <div class="col-md-3">status</div>
-            <div class="col-md-3">total price</div>
-            </div>
-	    {% for n in data %}
-	      <div class="row">
-		{% for m in n %}
-	        <div class="col-md-3">{{m}}</div>
-		{% endfor %}
-	      </div>
-	    {% endfor %}
-	  </div>
-
-      <form class="form-signin" method="POST" action="/order">
-        <h2 class="form-signin-heading">Please fill in the Order ID you want to inquire.</h2>
-        {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
-        <label class="sr-only">ID</label><span id="hint">ID *</span>
-        <input type="text" class="form-control" name="id" required autofocus>
- 
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Inquire</button>
-      </form>
+	    <h1>Current Order List</h1>
+      <div class="row" id="column">
+        <div class="col-md-3" id="d1">Orderid</div>
+        <div class="col-md-3" id="d2">date</div>
+        <div class="col-md-3" id="d3">status</div>
+        <div class="col-md-3" id="d4">total price</div>
+      </div>
+  	  {% for n in data %}
+  	  <div class="row">
+        <div class="col-md-3" id="d1">{{n[0]}}</div>
+        <div class="col-md-3" id="d2">{{n[1]}}</div>
+        <div class="col-md-3" id="d3">{{n[2]}}</div>
+        <div class="col-md-3" id="d4">{{n[3]}}</div>
+      	<!-- {% for m in n %}
+      	<div class="col-md-3">{{m}}</div>
+      	{% endfor %} -->
+      </div>
+      {% endfor %}
+    	 
+      <div class="row" id="select_order">
+        <div class="col-md-6" id="e1">
+          <h3 class="form-signin-heading">Please fill in the Order ID you want to inquire.</h3>
+          {% if error: %} <p class="error" id="warning"><strong>Error:</strong> {{ error }}</p> {% endif %}
+        </div>
+        <div class="col-md-6" id="e2">
+          <form class="form-signin" method="POST" action="/order">
+            <label class="sr-only">ID</label><span id="hint">Order ID *</span>
+            <input type="text" class="form-control" name="id" required autofocus id="input_orderno">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Inquire</button>
+          </form>
+        </div>
+      </div>
       
-	{% if order_status: %} <p class="order_status" id="order">
-		<div>
-	<!--	<div>{{order_status}}</div> -->
- 		 <div>
-	            <div class="row">
-	            <div class="col-md-4">Goodid</div>
-	            <div class="col-md-4">Quantity</div>
-	            </div>
+	    {% if order_status: %} <p class="order_status" id="order">
+	    <div class="row" id="column">
+	      <div class="col-md-3" id="h1">No.</div>
+        <div class="col-md-4" id="h2">Name</div>
+	      <div class="col-md-3" id="h3">Quantity</div>
+        <div class="col-md-2" id="h4">Price</div>
+	    </div>
 	   
-		    {% for goods in order_status %}
-		      <div class="row">
-			{% for a in goods %}
-		        <div class="col-md-4">{{a}}</div>
-			{% endfor %}
-		</div>
+		  {% for goods in order_status %}
+		  <div class="row">
+			  <div class="col-md-3" id="h1">{{goods[0]}}</div>
+		    <div class="col-md-4" id="h2">{{goods[1]}}</div>
+        <div class="col-md-3" id="h3">{{goods[2]}}</div>
+        <div class="col-md-2" id="h4">{{goods[2] * goods[3]}}</div>
+		  </div>
 	    {% endfor %}
-	  </div> 
-	{% endif %}
+	    {% endif %}
 
       <footer class="footer">
         <p>&copy; 2016 Spring, IDB.</p>
