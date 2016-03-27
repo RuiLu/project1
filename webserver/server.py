@@ -720,16 +720,16 @@ def cart():
 
     for item in data:
       gid = item[0]
-      number = item[2]
+      number = int(item[2])
       # print item[0], item[1], item[2]
       sql = 'SELECT quantity FROM goods WHERE goodid = %s'
       cursor = g.conn.execute(sql, gid)
       infos = []
       for infos in cursor:
-        quantity_here = infos[0]
+        quantity_here = int(infos[0])
         print 'quantity_here: ',quantity_here
         print 'number_here', number
-        diff = int(quantity) - int(number)
+        diff = quantity - number
         print 'diff_here: ',diff
         sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
         try:
