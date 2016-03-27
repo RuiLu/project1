@@ -727,17 +727,17 @@ def cart():
       infos = []
       for infos in cursor:
         quantity_here = int(infos[0])
-        print 'quantity_here: ',quantity_here
-        print 'number_here', number
-        diff = int(quantity - number)
-        print 'diff_here: ',diff
-        sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
-        try:
-          g.conn.execute(sql, diff)
-          print 'Succeeded!'
-        except:
-          error = 'Fail to deduct from goods table.'
-          print error
+      print 'quantity_here: ',quantity_here
+      print 'number_here', number
+      diff = int(quantity - number)
+      print 'diff_here: ',diff
+      sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
+      try:
+        g.conn.execute(sql, diff)
+        print 'Succeeded!'
+      except:
+        error = 'Fail to deduct from goods table.'
+        print error
     cursor.close();
 
     print 'get a POST'
