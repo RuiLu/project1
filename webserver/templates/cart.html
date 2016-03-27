@@ -11,12 +11,12 @@
     <title>FindYa</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="grid.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='grid.css') }}" rel="stylesheet">
     
 
 
@@ -55,33 +55,34 @@
 	<!--  <div>{{data}}</div> -->
   	  <div>
         <div class="row" id="column">
-          <div class="col-md-2">No.</div>
-          <div class="col-md-3">Name</div>
-          <div class="col-md-2">Quantity</div>
-          <div class="col-md-3">Total Price</div>
-         <div class="col-md-2">Operation</div>
+          <div class="col-md-2" id="c1">No.</div>
+          <div class="col-md-3" id="c2">Name</div>
+          <div class="col-md-2" id="c3">Quantity</div>
+          <div class="col-md-3" id="c4">Total Price</div>
+          <div class="col-md-2" id="c5">Operation</div>
         </div>
-	    {% for n in data %}
-      <form method="POST" action="/delete_from_cart">
-        <div class="row" id="cart_content">
-          <div class="col-md-2" id="c1">
-            <input type="text" name="goodid" value="{{n[1]}}" size="6" style="background-color:transparent; border:0px" readonly="readonly">
+  	    {% for n in data %}
+        <form method="POST" action="/delete_from_cart">
+          <div class="row" id="cart_content">
+            <div class="col-md-2" id="c1">
+              <input type="text" name="goodid" value="{{n[1]}}" size="6" style="background-color:transparent; border:0px" readonly="readonly">
+            </div>
+            <!-- <div class="col-md-1" id="c1">{{n[1]}}</div> -->
+            <div class="col-md-3" id="c2">{{n[2]}}</div>
+            <div class="col-md-2" id="c3">{{n[3]}}</div>
+            <div class="col-md-3" id="c4">{{n[4]}}</div>
+            <div class="col-md-2" id="c5">
+              <button type="submit" id="delete_from_cart">delete</button>
+            </div>
+            <!-- {% for m in n %} -->
+             <!-- <div class="col-md-3">{{m}}</div> -->
+            <!-- {% endfor %} -->
           </div>
-          <!-- <div class="col-md-1" id="c1">{{n[1]}}</div> -->
-          <div class="col-md-3" id="c2">{{n[2]}}</div>
-          <div class="col-md-2" id="c3">{{n[3]}}</div>
-          <div class="col-md-3" id="c4">{{n[4]}}</div>
-          <div class="col-md-2" id="c5">
-            <button type="submit" id="delete_from_cart">delete</button>
-          </div>
-          <!-- {% for m in n %} -->
-           <!-- <div class="col-md-3">{{m}}</div> -->
-          <!-- {% endfor %} -->
-        </div>
-      </form>
-	    {% endfor %}
+        </form>
+  	    {% endfor %}
 	    </div>
 	    <h1>Total Price of Current Cart: {{total}}</h1>
+      <hr>
 
       <!-- <form class="form-signin" method="POST" action="/cart">
         <h2 class="form-signin-heading">Please fill in the Good ID you want to remove.</h2>
@@ -93,42 +94,41 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Remove</button>
       </form>  -->
       
-	<p class="Billing Information" id="billinginfo">
-		<div>
+	<!-- <p class="Billing Information" id="billinginfo">
+		<div> -->
 	<!--	<div>{{Billinginfo}}</div> -->
  		  <div>
-	      <div class="row">
-  	      <div class="col-md-1">No</div>
-          <div class="col-md-3">Credit and debit</div>
-          <div class="col-md-2">Name on card</div>
-  	      <div class="col-md-4">Billling Address</div>
-  	      <div class="col-md-2">Select</div>
+	      <div class="row" id="column">
+  	      <div class="col-md-1" id="d1">No</div>
+          <div class="col-md-3" id="d2">Credit and debit</div>
+          <div class="col-md-3" id="c3">Name on card</div>
+  	      <div class="col-md-5" id="c4">Billling Address</div>
   	    </div>
 	   
   		  {% for bill in Billinginfo %}
-        <form method="POST" action>
-    		  <div class="row">
-    			  <div class="col-md-1">{{bill[0]}}</div>
-    			  <div class="col-md-3">{{bill[1]}}</div>
-            <div class="col-md-2">{{bill[2]}}</div>
-            <div class="col-md-4">{{bill[3]}}</div>
-            <div class="col-md-2">
-              <button type="submit" id="select">selete</button>
-            </div>
-    		  </div>
-        </form>
+    		<div class="row">
+    			<div class="col-md-1" id="d1">{{bill[0]}}</div>
+    			<div class="col-md-3" id="d2">{{bill[1]}}</div>
+          <div class="col-md-3" id="d3">{{bill[2]}}</div>
+          <div class="col-md-5" id="d4">{{bill[3]}}</div>
+    		</div>
   	    {% endfor %}
 	    </div> 
-	
- 	    <form class="form-signin" method="POST" action="/cart"> 
-        <h2 class="form-signin-heading">Please choose the billing of this order.</h2>
-        {% if error2: %} <p class="error" id="warning"><strong>Error:</strong> {{ error2 }}</p> {% endif %}
-        <label class="sr-only">ID</label><span id="hint">ID *</span>
-        <input type="text" class="form-control" name="billingid" required autofocus>
- 
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-      </form>
+      <div class="row" id="select_billing">
+        <div class="col-md-6" id="e1">
+          <h3 class="form-signin-heading">Please choose the billing of this order.</h3>
+          {% if error2: %} <p class="error" id="warning"><strong>Error:</strong> {{ error2 }}</p> {% endif %}
+        </div>
+        <div class="col-md-6" id="e2">
+          <form class="form-signin" method="POST" action="/cart"> 
+            <label class="sr-only">ID</label><span id="hint">ID *</span>
+            <input type="text" class="form-control" name="billingid" id="input_billno" required autofocus>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+ 	    
 
       <footer class="footer">
         <p>&copy; 2016 Spring, IDB.</p>

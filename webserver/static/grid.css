@@ -13,22 +13,29 @@ h4 {
   padding-bottom: 15px;
   /*background-color: #BFDCFA;*/
   /*background-color: rgba(86,61,124,.15);*/
-  border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
+  /*border: 1px solid #ddd;
+  border: 1px solid rgba(86,61,124,.2);*/
 }
 
 hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 #c1,#c2,#c3,#c4,#c5 {
-  background-color: #f0f0f5;
   height: 60px;
   white-space: nowrap;
+  line-height: 30px;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#c1,#c2,#c3,#c4 {
+  border-right-style: none;
 }
 
 #delete_from_cart {
@@ -44,4 +51,42 @@ hr {
   font-weight: bold;
   background-color: #BFDCFA;
   text-align: center;
+}
+
+#select_billing {
+  height: 200px;
+  border: none;
+}
+
+#d1,#d2,#d3,#d4 {
+  height: 60px;
+  white-space: nowrap;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#d1,#d2,#d3 {
+  border-right-style: none;
+}
+
+#e1,#e2 {
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
+  height: 160px;
+}
+#e1 {
+  border-right-style: none;
+}
+
+#hint {
+  margin-bottom: 10px;
+}
+#input_billno {
+  margin-bottom: 20px;
 }
