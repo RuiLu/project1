@@ -722,7 +722,7 @@ def cart():
   if request.method=='POST':
 
     for item in data:
-      print item[0], item[1], item[3]
+      print item[0], item[1], item[2]
 
     print 'get a POST'
     goodid=request.form.get('goodid','')
