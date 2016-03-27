@@ -722,7 +722,15 @@ def cart():
   if request.method=='POST':
 
     for item in data:
-      print item[0], item[1], item[2]
+      gid = item[0]
+      number = item[2]
+      # print item[0], item[1], item[2]
+      sql = 'SELECT quantity FROM goods WHERE goodid = %s'
+      cursor = g.conn.execute(sql, gid)
+      infos = []
+      for infos in cursor:
+        quantity_here = infos[0]
+        print 'quantity_here: ',quantity_here
 
     print 'get a POST'
     goodid=request.form.get('goodid','')
