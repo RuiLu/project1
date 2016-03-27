@@ -25,7 +25,7 @@
 }
 
 #surrounding{
-  margin-bottom: 10px;
+  background-color: #BFDCFA;
 }
 
 #delete{
@@ -67,5 +67,5 @@ hr {
 }
 
 #label_property {
-  margin-top: 10px;
+  margin-top: 15px;
 }
