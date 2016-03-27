@@ -61,6 +61,8 @@ hr {
 #select_billing {
   height: 200px;
   border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #d1,#d2,#d3,#d4 {
