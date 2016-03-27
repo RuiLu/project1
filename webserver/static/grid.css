@@ -1,18 +1,18 @@
 h4 {
   margin-top: 25px;
 }
-.row {
+/*.row {
   margin-bottom: 20px;
 }
 .row .row {
   margin-top: 10px;
   margin-bottom: 0;
-}
+}*/
 [class*="col-"] {
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: #eee;
-  background-color: rgba(86,61,124,.15);
+  /*background-color: #BFDCFA;*/
+  /*background-color: rgba(86,61,124,.15);*/
   border: 1px solid #ddd;
   border: 1px solid rgba(86,61,124,.2);
 }
@@ -22,3 +22,26 @@ hr {
   margin-bottom: 40px;
 }
 
+#c1,#c2,#c3,#c4,#c5 {
+  background-color: #f0f0f5;
+  height: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+#delete_from_cart {
+  height: 30px;
+  width: 80%;
+  line-height: 30px;
+  border: none;
+  color: white;
+  background-color: #3385ff;
+}
+
+#column {
+  font-weight: bold;
+  background-color: #BFDCFA;
+  text-align: center;
+}

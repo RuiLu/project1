@@ -662,6 +662,23 @@ def addToCart():
     return redirect('product')
   return redirect('/product')
 
+@app.route('/delete_from_cart', methods=['POST'])
+def delete_from_cart:
+  error = None
+  userid = session['userid']
+  goodid = request.form.get('goodid')
+  print userid, goodid
+
+  parameters = (userid, goodid)
+  sql = 'DELETE FROM cart_detail WHERE userid=%s AND goodid=%s'
+
+  try:
+    g.conn.execute(sql, parameters)
+    return redirect('/cart')
+  except:
+    error = "Delete failed."
+    return redirect('/cart')
+
 
 @app.route('/cart', methods=['GET', 'POST'])
 def cart():
@@ -678,7 +695,6 @@ def cart():
 
 
   cursor = g.conn.execute('SELECT g.goodid, g.name, g.price, c.quantity from cart_detail c, goods g where g.goodid=c.goodid and c.userid=%s',uid)
-  print '*** first sql search successfully finished ***'
   for res in cursor:
     tot=tot+1
     good=[]
@@ -692,8 +708,7 @@ def cart():
     data.append(good)
   cursor.close()
   print 'cursor closed'
-  cursor = g.conn.execute('SELECT billingid, billingaddress, cardno from billinginfo where userid=%s',uid)
-  print '*** second sql search successfully finished ***'
+  cursor = g.conn.execute('SELECT billingid, cardno, holder, billingaddress from billinginfo where userid=%s',uid)
   
   for res in cursor:
     bill=[]
@@ -704,9 +719,9 @@ def cart():
   cursor.close()
   print 'finish sql search'
 
- 
- 
   if request.method=='POST':
+
+
     print 'get a POST'
     goodid=request.form.get('goodid','')
     billid=request.form.get('billingid','')
