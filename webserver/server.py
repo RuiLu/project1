@@ -270,9 +270,11 @@ def sell():
     parameters = (name, price, description, quantity, date, picture, userid)
     try:
       g.conn.execute('INSERT INTO goods(name,price,description,quantity,date,picture,userid) VALUES (%s,%s,%s,%s,%s,%s,%s)', parameters)
+      print 'why fail?'
       return redirect('/main')
     except Exception as e:
       error = 'Invalid input, try again.'
+      print 'why succeed?'
       return render_template('sell.html', error = error)
   return render_template('sell.html')
 
@@ -728,8 +730,8 @@ def cart():
       for infos in cursor:
         quantity_here = int(infos[0])
       print 'quantity_here: ',quantity_here
-      print 'number_here', number
-      diff = int(quantity - number)
+      print 'number_here: ', number
+      diff = quantity - number
       print 'diff_here: ',diff
       sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
       try:
