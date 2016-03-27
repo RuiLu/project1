@@ -741,11 +741,11 @@ def cart():
         quantity_here = int(infos[0])
       print 'quantity_here: ',quantity_here
       print 'number_here: ', number
-      diff = quantity - number
+      different = quantity - number
       print 'diff_here: ',diff
       sql = 'UPDATE goods SET quantity = %s WHERE goodid = gid'
       try:
-        g.conn.execute(sql, diff)
+        g.conn.execute(sql, different)
         print 'Succeeded!'
       except:
         error = 'Fail to deduct from goods table.'
