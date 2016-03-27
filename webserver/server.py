@@ -270,10 +270,10 @@ def sell():
     picture = request.form['picture']
     print picture
     i = datetime.datetime.now()
-    date = i.isoformat()
+    current = i.isoformat()
     print date
     userid = session['userid']
-    sql = 'INSERT INTO goods(name, price, description, quantity, date, picture, userid) VALUES (%s,%s,%s,%s,%s,%s,%s)'
+    sql = 'INSERT INTO goods(name, price, description, quantity, current, picture, userid) VALUES (%s,%s,%s,%s,%s,%s,%s)'
     parameters = (name, price, description, quantity, date, picture, userid)
     print sql
     try:
