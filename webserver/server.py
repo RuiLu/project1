@@ -268,6 +268,7 @@ def sell():
     quantity = int(request.form['quantity'])
     print quantity
     picture = request.form['picture']
+    print picture
     i = datetime.datetime.now()
     date = i.isoformat()
     print date
