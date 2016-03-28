@@ -786,7 +786,7 @@ def cart():
             print 'try to form a new order'
             t=date.today()
             print t
-            parameters=(a[0],uid,int(billid),t,'pending','%.2f'%total)
+            parameters=(a[0],uid,int(billid),t,'completed','%.2f'%total)
             print 'parameters formed'
             print 'Insert into order_list values(%s,%s,%s,\'%s\',\'%s\',%s);'%parameters
            
